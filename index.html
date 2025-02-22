@@ -1,47 +1,61 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LumeSearch</title>
+  <title>LumeSearch - The Smarter Search</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
   <div class="app">
+    <!-- Header Section -->
     <header>
-      <h1>LumeSearch</h1>
-      <div class="theme-toggle">
-        <button id="theme-toggle-btn">Day/Night Theme</button>
-      </div>
+      <h1 class="logo">LumeSearch</h1>
+      <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle Theme">🌙</button>
     </header>
+
+    <!-- Main Search Section -->
     <main>
-      <section class="search-section">
-        <div class="search-bar">
-          <input type="text" id="search-input" placeholder="Search...">
+      <section class="search-container">
+        <div class="search-box">
+          <input type="text" id="search-input" class="search-input" placeholder="Search anything...">
+          
+          <!-- Site Dropdown -->
           <div class="dropdown">
-            <button id="site-dropdown-btn">Select Site</button>
+            <button id="site-dropdown-btn" class="dropdown-btn">🌐 Sites</button>
             <div id="site-dropdown-menu" class="dropdown-content">
-              <!-- ...existing code... -->
+              <!-- Sites will be populated here -->
             </div>
           </div>
-          <input type="text" id="custom-site-input" placeholder="Enter custom site...">
-        </div>
-        <div class="filetype-filter">
-          <label for="filetype-select">Filter by Filetype:</label>
-          <select id="filetype-select" multiple>
-            <!-- ...existing code... -->
+
+          <!-- Filetype Filter -->
+          <select id="filetype-select" class="filetype-select" multiple aria-label="Filter by filetype">
+            <!-- Filetype options will be populated here -->
           </select>
+
+          <!-- Search Button -->
+          <button id="search-btn" class="search-btn">🔍 Search</button>
         </div>
-        <button id="search-btn">Search</button>
-        <div id="live-search-preview"></div>
+
+        <!-- Live Search Preview -->
+        <div id="live-search-preview" class="live-search-preview"></div>
       </section>
-      <section id="search-results">
-        <!-- ...existing code... -->
+
+      <!-- Search Results -->
+      <section id="search-results" class="search-results">
+        <!-- Results will be displayed here -->
       </section>
     </main>
+
+    <!-- Footer -->
     <footer>
-      <p>&copy; 2025 LumeSearch. All rights reserved.</p>
+      <p>&copy; 2025 <strong>LumeSearch</strong>. All rights reserved.</p>
     </footer>
   </div>
+
   <script type="module" src="app.js"></script>
 </body>
 </html>
