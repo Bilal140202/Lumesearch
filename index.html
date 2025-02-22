@@ -1,0 +1,189 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LumeSearch - Futuristic Google-Powered Search Engine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>LumeSearch</h1>
+      <div class="mode-toggle">
+        <button id="toggle-mode">Toggle Mode</button>
+      </div>
+    </header>
+    <main class="main">
+      <section class="search-bar">
+        <input type="text" id="search-input" placeholder="Search...">
+        <div class="site-selector">
+          <select id="site-select" multiple>
+            <option value="fztvseries.mobi">Movies & TV Show Download Sites</option>
+            <option value="1337x.to">1337x.to</option>
+            <option value="yts.mx">yts.mx</option>
+            <option value="mkvcinemas.lat">mkvcinemas.lat</option>
+            <option value="mega.nz">Cloud Storage & File Hosting</option>
+            <option value="mediafire.com">mediafire.com</option>
+            <option value="zippyshare.com">zippyshare.com</option>
+            <option value="anonfiles.com">anonfiles.com</option>
+            <option value="libgen.is">Educational & Research Papers</option>
+            <option value="sci-hub.se">sci-hub.se</option>
+            <option value="pdfdrive.com">pdfdrive.com</option>
+            <option value="subscene.com">Subtitles & Lyrics</option>
+            <option value="opensubtitles.org">opensubtitles.org</option>
+            <option value="lyrics.com">lyrics.com</option>
+            <option value="genius.com">genius.com</option>
+            <option value="gogoanime.pe">Anime & Manga</option>
+            <option value="9anime.to">9anime.to</option>
+            <option value="mangadex.org">mangadex.org</option>
+            <option value="animepahe.com">animepahe.com</option>
+            <option value="fitgirl-repacks.site">Games & Software</option>
+            <option value="oceanofgames.com">oceanofgames.com</option>
+            <option value="nexusmods.com">nexusmods.com</option>
+            <option value="cracked.to">cracked.to</option>
+            <option value="dramacool.so">K-Drama Streaming & Downloading Sites</option>
+            <option value="kissasian.pe">kissasian.pe</option>
+            <option value="myasiantv.to">myasiantv.to</option>
+            <option value="dramaday.net">dramaday.net</option>
+            <option value="viewasian.co">viewasian.co</option>
+            <option value="ondramanice.tv">ondramanice.tv</option>
+            <option value="viki.com">viki.com</option>
+            <option value="nyaasi.si">nyaasi.si</option>
+            <option value="avistaz.to">avistaz.to</option>
+            <option value="asiandramahd.com">asiandramahd.com</option>
+            <option value="fastdrama.me">fastdrama.me</option>
+            <option value="gooddrama.to">gooddrama.to</option>
+            <option value="kshow123.net">kshow123.net</option>
+            <option value="newasiantv.tv">newasiantv.tv</option>
+            <option value="soompi.com">soompi.com</option>
+            <option value="koreanfilm.or.kr">koreanfilm.or.kr</option>
+            <option value="asiancrush.com">asiancrush.com</option>
+          </select>
+          <input type="text" id="custom-site" placeholder="Enter custom site...">
+        </div>
+        <div class="filetype-selector">
+          <select id="filetype-select" multiple>
+            <option value="">Select Filetypes</option>
+            <optgroup label="Document Files">
+              <option value="pdf">PDF (.pdf)</option>
+              <option value="doc">Word (.doc, .docx)</option>
+              <option value="xls">Excel (.xls, .xlsx)</option>
+              <option value="ppt">PowerPoint (.ppt, .pptx)</option>
+              <option value="txt">TXT (.txt)</option>
+            </optgroup>
+            <optgroup label="Image Files">
+              <option value="jpg">JPEG (.jpg, .jpeg)</option>
+              <option value="png">PNG (.png)</option>
+              <option value="gif">GIF (.gif)</option>
+              <option value="svg">SVG (.svg)</option>
+            </optgroup>
+            <optgroup label="Video Files">
+              <option value="mp4">MP4 (.mp4)</option>
+              <option value="avi">AVI (.avi)</option>
+              <option value="mkv">MKV (.mkv)</option>
+              <option value="mov">MOV (.mov)</option>
+            </optgroup>
+            <optgroup label="Audio Files">
+              <option value="mp3">MP3 (.mp3)</option>
+              <option value="wav">WAV (.wav)</option>
+              <option value="flac">FLAC (.flac)</option>
+            </optgroup>
+            <optgroup label="Compressed Files">
+              <option value="zip">ZIP (.zip)</option>
+              <option value="rar">RAR (.rar)</option>
+            </optgroup>
+          </select>
+        </div>
+        <button id="search-button">Search</button>
+      </section>
+      <section class="anime-search">
+        <h2>Anime Search</h2>
+        <input type="text" id="anime-search-input" placeholder="Search...">
+        <div class="anime-site-selector">
+          <select id="anime-site-select" multiple>
+            <option value="gogoanime.pe">gogoanime.pe</option>
+            <option value="9anime.to">9anime.to</option>
+            <option value="mangadex.org">mangadex.org</option>
+            <option value="animepahe.com">animepahe.com</option>
+          </select>
+        </div>
+        <button id="anime-search-button">Search</button>
+      </section>
+      <section class="kdrama-search">
+        <h2>K-Drama/Asian Drama Search</h2>
+        <input type="text" id="kdrama-search-input" placeholder="Search...">
+        <div class="kdrama-site-selector">
+          <select id="kdrama-site-select" multiple>
+            <option value="dramacool.so">Dramacool.so</option>
+            <option value="kissasian.pe">Kissasian.pe</option>
+            <option value="myasiantv.to">Myasiantv.to</option>
+            <option value="dramaday.net">Dramaday.net</option>
+            <option value="viewasian.co">Viewasian.co</option>
+            <option value="ondramanice.tv">Ondramanice.tv</option>
+            <option value="viki.com">Viki.com</option>
+            <option value="nyaasi.si">Nyaa.si</option>
+            <option value="avistaz.to">Avistaz.to</option>
+            <option value="asiandramahd.com">Asiandramahd.com</option>
+            <option value="fastdrama.me">Fastdrama.me</option>
+            <option value="gooddrama.to">Gooddrama.to</option>
+            <option value="kshow123.net">Kshow123.net</option>
+            <option value="newasiantv.tv">Newasiantv.tv</option>
+            <option value="soompi.com">Soompi.com</option>
+            <option value="koreanfilm.or.kr">Koreanfilm.or.kr</option>
+            <option value="asiancrush.com">Asiancrush.com</option>
+          </select>
+        </div>
+        <div class="kdrama-filetype-selector">
+          <select id="kdrama-filetype-select" multiple>
+            <option value="">Select Filetypes</option>
+            <optgroup label="Video Files">
+              <option value="mp4">MP4 (.mp4)</option>
+              <option value="avi">AVI (.avi)</option>
+              <option value="mkv">MKV (.mkv)</option>
+              <option value="mov">MOV (.mov)</option>
+            </optgroup>
+          </select>
+        </div>
+        <button id="kdrama-search-button">Search</button>
+      </section>
+      <section class="book-search">
+        <h2>Book Search</h2>
+        <input type="text" id="book-search-input" placeholder="Search...">
+        <div class="book-site-selector">
+          <select id="book-site-select" multiple>
+            <option value="drive.google.com">Google Drive</option>
+            <option value="manybooks.net">ManyBooks</option>
+            <option value="gutenberg.org">Project Gutenberg</option>
+            <option value="openlibrary.org">Open Library</option>
+          </select>
+        </div>
+        <div class="book-filetype-selector">
+          <select id="book-filetype-select" multiple>
+            <option value="">Select Filetypes</option>
+            <optgroup label="Document Files">
+              <option value="pdf">PDF (.pdf)</option>
+              <option value="epub">EPUB (.epub)</option>
+              <option value="mobi">MOBI (.mobi)</option>
+              <option value="azw3">Kindle (.azw3)</option>
+            </optgroup>
+          </select>
+        </div>
+        <button id="book-search-button">Search</button>
+      </section>
+      <section class="search-history">
+        <h2>Recent Searches</h2>
+        <ul id="search-history-list">
+          <!-- ...existing code... -->
+        </ul>
+      </section>
+      <section class="bookmark-folders">
+        <h2>Bookmark Folders</h2>
+        <ul id="bookmark-folders-list">
+          <!-- ...existing code... -->
+        </ul>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

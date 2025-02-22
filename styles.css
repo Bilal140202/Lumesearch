@@ -1,0 +1,429 @@
+:root {
+  --neon-color: #39ff14;
+  --glass-color: rgba(255, 255, 255, 0.2);
+  --accent-color: #1f2937;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: var(--accent-color);
+  color: #e2e8f0;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  color: inherit;
+}
+
+.mode-toggle button {
+  background-color: var(--glass-color);
+  border: 2px solid var(--neon-color);
+  color: var(--neon-color);
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.mode-toggle button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #ffed4a;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+}
+
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.search-bar input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid var(--neon-color);
+  border-radius: 10px;
+  background-color: var(--glass-color);
+  color: inherit;
+  transition: border-color 0.3s;
+}
+
+.search-bar input[type="text"]:focus {
+  border-color: #ffed4a;
+}
+
+.site-selector, .filetype-selector, .anime-site-selector, .kdrama-site-selector, .kdrama-filetype-selector, .book-site-selector, .book-filetype-selector {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.site-selector select, .filetype-selector select, .anime-site-selector select, .kdrama-site-selector select, .kdrama-filetype-selector select, .book-site-selector select, .book-filetype-selector select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--neon-color);
+  border-radius: 10px;
+  background-color: var(--glass-color);
+  color: inherit;
+  transition: border-color 0.3s;
+}
+
+.site-selector select:focus, .filetype-selector select:focus, .anime-site-selector select:focus, .kdrama-site-selector select:focus, .kdrama-filetype-selector select:focus, .book-site-selector select:focus, .book-filetype-selector select:focus {
+  border-color: #ffed4a;
+}
+
+.site-selector input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--neon-color);
+  border-radius: 10px;
+  background-color: var(--glass-color);
+  color: inherit;
+  transition: border-color 0.3s;
+}
+
+.site-selector input[type="text"]:focus {
+  border-color: #ffed4a;
+}
+
+.search-bar button, .anime-search .search-bar button, .kdrama-search .search-bar button, .book-search .search-bar button {
+  background-color: var(--neon-color);
+  border: none;
+  color: #1f2937;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-bar button:hover, .anime-search .search-bar button:hover, .kdrama-search .search-bar button:hover, .book-search .search-bar button:hover {
+  background-color: #ffed4a;
+}
+
+.search-history, .bookmark-folders {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.search-history h2, .bookmark-folders h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: inherit;
+}
+
+.search-history ul, .bookmark-folders ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-history li, .bookmark-folders li {
+  background-color: var(--glass-color);
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+.search-history li:hover, .bookmark-folders li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.light-mode {
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+body.light-mode .mode-toggle button {
+  color: var(--accent-color);
+  border-color: var(--neon-color);
+}
+
+body.light-mode .mode-toggle button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: #ffed4a;
+}
+
+body.light-mode .search-bar input[type="text"] {
+  background-color: #ffffff;
+  border-color: var(--neon-color);
+}
+
+body.light-mode .search-bar input[type="text"]:focus {
+  border-color: #ffed4a;
+}
+
+body.light-mode .site-selector select, .filetype-selector select, .anime-site-selector select, .kdrama-site-selector select, .kdrama-filetype-selector select, .book-site-selector select, .book-filetype-selector select {
+  background-color: #ffffff;
+  border-color: var(--neon-color);
+}
+
+body.light-mode .site-selector select:focus, .filetype-selector select:focus, .anime-site-selector select:focus, .kdrama-site-selector select:focus, .kdrama-filetype-selector select:focus, .book-site-selector select:focus, .book-filetype-selector select:focus {
+  border-color: #ffed4a;
+}
+
+body.light-mode .site-selector input[type="text"] {
+  background-color: #ffffff;
+  border-color: var(--neon-color);
+}
+
+body.light-mode .site-selector input[type="text"]:focus {
+  border-color: #ffed4a;
+}
+
+body.light-mode .search-bar button, .anime-search .search-bar button, .kdrama-search .search-bar button, .book-search .search-bar button {
+  background-color: var(--neon-color);
+  color: #ffffff;
+}
+
+body.light-mode .search-bar button:hover, .anime-search .search-bar button:hover, .kdrama-search .search-bar button:hover, .book-search .search-bar button:hover {
+  background-color: #ffed4a;
+  color: #1f2937;
+}
+
+body.light-mode .search-history li, .bookmark-folders li {
+  background-color: #ffffff;
+  color: #1f2937;
+}
+
+body.light-mode .search-history li:hover, .bookmark-folders li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+@keyframes neon-glow {
+  from {
+    filter: drop-shadow(0 0 5px var(--neon-color)) drop-shadow(0 0 20px var(--neon-color));
+  }
+  to {
+    filter: drop-shadow(0 0 15px var(--neon-color)) drop-shadow(0 0 30px var(--neon-color));
+  }
+}
+
+.header h1 {
+  animation: neon-glow 1.5s alternate infinite;
+}
+
+.mode-toggle button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #39ff14, #ffed4a);
+  mask: inherit;
+  background-size: 400% 400%;
+  animation: neon-glow 5s linear infinite;
+  z-index: -1;
+}
+
+.mode-toggle button:hover::before {
+  animation: neon-glow 3s linear infinite;
+}
+
+.anime-search {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.anime-search h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: inherit;
+}
+
+.anime-search .anime-site-selector {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.anime-search .anime-site-selector select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--neon-color);
+  border-radius: 10px;
+  background-color: var(--glass-color);
+  color: inherit;
+  transition: border-color 0.3s;
+}
+
+.anime-search .anime-site-selector select:focus {
+  border-color: #ffed4a;
+}
+
+.anime-search .search-bar button {
+  background-color: var(--neon-color);
+  border: none;
+  color: #1f2937;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.anime-search .search-bar button:hover {
+  background-color: #ffed4a;
+}
+
+.kdrama-search {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.kdrama-search h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: inherit;
+}
+
+.kdrama-search .kdrama-site-selector {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.kdrama-search .kdrama-site-selector select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--neon-color);
+  border-radius: 10px;
+  background-color: var(--glass-color);
+  color: inherit;
+  transition: border-color 0.3s;
+}
+
+.kdrama-search .kdrama-site-selector select:focus {
+  border-color: #ffed4a;
+}
+
+.kdrama-search .kdrama-filetype-selector {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.kdrama-search .kdrama-filetype-selector select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--neon-color);
+  border-radius: 10px;
+  background-color: var(--glass-color);
+  color: inherit;
+  transition: border-color 0.3s;
+}
+
+.kdrama-search .kdrama-filetype-selector select:focus {
+  border-color: #ffed4a;
+}
+
+.kdrama-search .search-bar button {
+  background-color: var(--neon-color);
+  border: none;
+  color: #1f2937;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.kdrama-search .search-bar button:hover {
+  background-color: #ffed4a;
+}
+
+.book-search {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.book-search h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: inherit;
+}
+
+.book-search .book-site-selector {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.book-search .book-site-selector select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--neon-color);
+  border-radius: 10px;
+  background-color: var(--glass-color);
+  color: inherit;
+  transition: border-color 0.3s;
+}
+
+.book-search .book-site-selector select:focus {
+  border-color: #ffed4a;
+}
+
+.book-search .book-filetype-selector {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.book-search .book-filetype-selector select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--neon-color);
+  border-radius: 10px;
+  background-color: var(--glass-color);
+  color: inherit;
+  transition: border-color 0.3s;
+}
+
+.book-search .book-filetype-selector select:focus {
+  border-color: #ffed4a;
+}
+
+.book-search .search-bar button {
+  background-color: var(--neon-color);
+  border: none;
+  color: #1f2937;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.book-search .search-bar button:hover {
+  background-color: #ffed4a;
+}
