@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LumeSearch</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>LumeSearch</h1>
+      <div class="theme-toggle">
+        <button id="theme-toggle-btn">Toggle Theme</button>
+      </div>
+    </header>
+    <main>
+      <section class="search-section">
+        <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Search...">
+          <div class="dropdown">
+            <button id="site-dropdown-btn">Select Site</button>
+            <div id="site-dropdown-menu" class="dropdown-content">
+              <!-- ...existing code... -->
+            </div>
+          </div>
+          <input type="text" id="custom-site-input" placeholder="Enter custom site...">
+        </div>
+        <div class="filetype-filter">
+          <label for="filetype-select">Filter by Filetype:</label>
+          <select id="filetype-select" multiple>
+            <!-- ...existing code... -->
+          </select>
+        </div>
+        <button id="search-btn">Search</button>
+        <div id="live-search-preview"></div>
+      </section>
+      <section id="search-results">
+        <!-- ...existing code... -->
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 LumeSearch. All rights reserved.</p>
+    </footer>
+  </div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
