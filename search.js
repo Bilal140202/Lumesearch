@@ -1,16 +1,15 @@
-const performSearch = (query, sites, filetypes) => {
-  let searchQuery = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+const performSearch = (query, sites = [], filetypes = []) => {
+  let searchParams = [encodeURIComponent(query)];
 
-  if (sites.length > 0) {
-    const siteQueries = sites.map(site => `site:${site}`).join('+OR+');
-    searchQuery += `+(${siteQueries})`;
+  if (sites.length) {
+    searchParams.push(`(${sites.map(site => `site:${site}`).join(' OR ')})`);
   }
 
-  if (filetypes.length > 0) {
-    const filetypeQueries = filetypes.map(filetype => `filetype:${filetype}`).join('+OR+');
-    searchQuery += `+(${filetypeQueries})`;
+  if (filetypes.length) {
+    searchParams.push(`(${filetypes.map(filetype => `filetype:${filetype}`).join(' OR ')})`);
   }
 
+  const searchQuery = `https://www.google.com/search?q=${searchParams.join('+')}`;
   window.open(searchQuery, '_blank');
 };
 
