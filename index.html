@@ -3,56 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LumeSearch - The Smarter Search</title>
+  <title>LumeSearch</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
   <div class="app">
-    <!-- Header Section -->
     <header>
-      <h1 class="logo">LumeSearch</h1>
-      <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle Theme">🌙</button>
+      <h1>LumeSearch</h1>
+      <div class="theme-toggle">
+        <button id="theme-toggle-btn">🌙</button>
+      </div>
     </header>
-
-    <!-- Main Search Section -->
     <main>
-      <section class="search-container">
-        <div class="search-box">
-          <input type="text" id="search-input" class="search-input" placeholder="Search anything...">
+      <section class="search-section">
+        <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Enter your search term">
           
-          <!-- Site Dropdown -->
+          <!-- Site Selection Dropdown -->
           <div class="dropdown">
-            <button id="site-dropdown-btn" class="dropdown-btn">🌐 Sites</button>
+            <button id="site-dropdown-btn">Select Sites</button>
             <div id="site-dropdown-menu" class="dropdown-content">
-              <!-- Sites will be populated here -->
+              <!-- Dynamically filled by JavaScript -->
             </div>
           </div>
 
-          <!-- Filetype Filter -->
-          <select id="filetype-select" class="filetype-select" multiple aria-label="Filter by filetype">
-            <!-- Filetype options will be populated here -->
-          </select>
-
-          <!-- Search Button -->
-          <button id="search-btn" class="search-btn">🔍 Search</button>
+          <!-- Custom Site Input -->
+          <input type="text" id="custom-site-input" placeholder="Enter custom site...">
         </div>
 
+        <!-- Filetype Filter -->
+        <div class="filetype-filter">
+          <label for="filetype-select">Filter by Filetype:</label>
+          <select id="filetype-select" multiple>
+            <option value="pdf">PDF</option>
+            <option value="doc">DOC</option>
+            <option value="mp4">MP4</option>
+            <option value="zip">ZIP</option>
+            <option value="png">PNG</option>
+          </select>
+        </div>
+
+        <button id="search-btn">Search</button>
+
         <!-- Live Search Preview -->
-        <div id="live-search-preview" class="live-search-preview"></div>
+        <div id="live-search-preview"></div>
       </section>
 
-      <!-- Search Results -->
-      <section id="search-results" class="search-results">
-        <!-- Results will be displayed here -->
-      </section>
+      <section id="search-results"></section>
     </main>
 
-    <!-- Footer -->
     <footer>
-      <p>&copy; 2025 <strong>LumeSearch</strong>. All rights reserved.</p>
+      <p>&copy; 2025 LumeSearch. All rights reserved.</p>
     </footer>
   </div>
 
