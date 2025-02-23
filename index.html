@@ -2,7 +2,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LumeSearch - Futuristic Google-Powered Search Engine</title>
+  <title>LumeSearch - Simple Search Engine</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -120,6 +120,17 @@
     <option value="aniwave.uk">Aniwave</option>
     <option value="anixtv.info">AnixTV</option>
 </select>
+          <div class="anime-filetype-selector">
+          <select id="anime-filetype-select" multiple>
+            <option value="">Select Filetypes</option>
+            <optgroup label="Video Files">
+              <option value="mp4">MP4 (.mp4)</option>
+              <option value="avi">AVI (.avi)</option>
+              <option value="mkv">MKV (.mkv)</option>
+              <option value="mov">MOV (.mov)</option>
+            </optgroup>
+          </select>
+        </div>
         </div>
         <button id="anime-search-button">Search</button>
       </section>
