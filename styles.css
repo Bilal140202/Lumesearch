@@ -1,15 +1,21 @@
 :root {
-  --neon-color: #39ff14;
+  --neon-color: #87CEEB;
   --glass-color: rgba(255, 255, 255, 0.2);
   --accent-color: #1f2937;
+  --sky-blue-color: #87CEEB; 
 }
 
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background-color: var(--accent-color);
+  background-color: var(--sky-blue-color); 
   color: #e2e8f0;
   transition: background-color 0.5s, color 0.5s;
+}
+
+body.dark-mode {
+  background-color: var(--accent-color);
+  color: #e2e8f0;
 }
 
 .app {
@@ -277,6 +283,27 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
 }
 
 .anime-search .anime-site-selector select:focus {
+  border-color: #ffed4a;
+}
+
+.anime-search .anime-filetype-selector {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.anime-search .anime-filetype-selector select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--neon-color);
+  border-radius: 10px;
+  background-color: var(--glass-color);
+  color: inherit;
+  transition: border-color 0.3s;
+}
+
+.anime-search .anime-filetype-selector select:focus {
   border-color: #ffed4a;
 }
 

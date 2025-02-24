@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleModeButton = document.getElementById('toggle-mode');
   const animeSearchInput = document.getElementById('anime-search-input');
   const animeSiteSelect = document.getElementById('anime-site-select');
+  const animeFiletypeSelect = document.getElementById('anime-filetype-select');
   const animeSearchButton = document.getElementById('anime-search-button');
   const kdramaSearchInput = document.getElementById('kdrama-search-input');
   const kdramaSiteSelect = document.getElementById('kdrama-site-select');
@@ -72,9 +73,14 @@ document.addEventListener('DOMContentLoaded', () => {
   animeSearchButton.addEventListener('click', () => {
     let query = animeSearchInput.value.trim();
     const selectedAnimeSites = Array.from(animeSiteSelect.selectedOptions).map(option => option.value);
+    const selectedAnimeFiletypes = Array.from(animeFiletypeSelect.selectedOptions).map(option => option.value);
 
     if (selectedAnimeSites.length > 0) {
       query += ' site:' + selectedAnimeSites.join(' OR site:');
+    }
+
+    if (selectedAnimeFiletypes.length > 0) {
+      query += ' filetype:' + selectedAnimeFiletypes.join(' OR filetype:');
     }
 
     if (query) {
