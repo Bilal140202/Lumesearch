@@ -454,3 +454,10 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
 .book-search .search-bar button:hover {
   background-color: #ffed4a;
 }
+
+body {
+    background-image: url('https://raw.githubusercontent.com/Bilal140202/Lumesearch/refs/heads/main/images%20(12).jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
