@@ -8,7 +8,9 @@
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background-color: var(--sky-blue-color); 
+  background-image: url(/images/12.jpeg); 
+  background-size: cover; 
+  background-attachment: fixed; 
   color: #e2e8f0;
   transition: background-color 0.5s, color 0.5s;
 }
@@ -243,7 +245,7 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, #39ff14, #ffed4a);
+  background: none;
   mask: inherit;
   background-size: 400% 400%;
   animation: neon-glow 5s linear infinite;
@@ -456,8 +458,58 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
 }
 
 body {
-    background-image: url('https://raw.githubusercontent.com/Bilal140202/Lumesearch/refs/heads/main/images%20(12).jpeg');
+    background-image: url('https://raw.githubusercontent.com/Bilal140202/Lumesearch/refs/heads/main/peakpx.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
+* 
+* {
+  text-shadow: -1px -1px 0 white,  
+               1px -1px 0 white,  
+              -1px  1px 0 white,  
+               1px  1px 0 white;
+}
+@keyframes fallingAshes {
+  0% {
+    transform: translateY(-10vh) translateX(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(-10vw);
+    opacity: 0;
+  }
+}
+
+.ashes-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ash {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(200, 200, 200, 0.8);
+  opacity: 0;
+  border-radius: 50%;
+  animation: fallingAshes linear infinite;
+}
+
+.ash:nth-child(1) { left: 5%; animation-duration: 5s; animation-delay: 0s; }
+.ash:nth-child(2) { left: 15%; animation-duration: 6s; animation-delay: 1s; }
+.ash:nth-child(3) { left: 25%; animation-duration: 4.5s; animation-delay: 0.5s; }
+.ash:nth-child(4) { left: 35%; animation-duration: 5.5s; animation-delay: 1.5s; }
+.ash:nth-child(5) { left: 50%; animation-duration: 6.5s; animation-delay: 2s; }
+.ash:nth-child(6) { left: 65%; animation-duration: 5.2s; animation-delay: 0.7s; }
+.ash:nth-child(7) { left: 75%; animation-duration: 6.8s; animation-delay: 1.2s; }
+.ash:nth-child(8) { left: 85%; animation-duration: 5.7s; animation-delay: 0.9s; }
+.ash:nth-child(9) { left: 95%; animation-duration: 7s; animation-delay: 2.5s; }

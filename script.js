@@ -164,4 +164,24 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     document.body.classList.add('light-mode');
   }
+
+  document.querySelectorAll('select[multiple]').forEach(select => {
+    select.addEventListener('change', (event) => {
+      const options = Array.from(event.target.options);
+      const selectAll = options.find(option => option.value === 'all');
+      
+      if (selectAll && selectAll.selected) {
+        options.forEach(option => {
+          if (option.value !== 'all') {
+            option.selected = true;
+          }
+        });
+      } else if (!selectAll) {
+        const allSelected = options.every(option => option.selected);
+        if (selectAll) {
+          selectAll.selected = allSelected;
+        }
+      }
+    });
+  });
 });
