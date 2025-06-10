@@ -403,8 +403,20 @@ document.addEventListener('DOMContentLoaded', () => {
     window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
   });
 
+  // --- Theme Setup and Toggle Button Emoji ---
+  function updateToggleModeButtonEmoji(button) {
+    if (!button) return;
+    // Assumes dark-mode class is on body for dark theme, otherwise light.
+    if (document.body.classList.contains('dark-mode')) {
+      button.textContent = '🌙'; // Moon for dark mode
+    } else {
+      button.textContent = '☀️'; // Sun for light mode
+    }
+  }
+
   toggleModeButton.addEventListener('click', () => {
-    toggleMode();
+    toggleMode(); // From utils.js, toggles body class
+    updateToggleModeButtonEmoji(toggleModeButton); // Update emoji after toggle
   });
 
   // --- Ash Animation Toggle Logic ---
@@ -434,17 +446,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
   darkModeMediaQuery.addEventListener('change', (e) => {
     if (e.matches) {
-      document.body.classList.remove('light-mode');
+      document.body.classList.remove('light-mode'); // Or document.body.classList.add('dark-mode');
     } else {
-      document.body.classList.add('light-mode');
+      document.body.classList.add('light-mode'); // Or document.body.classList.remove('dark-mode');
     }
+    updateToggleModeButtonEmoji(toggleModeButton); // Update emoji on system theme change
   });
 
+  // Initial theme setup
   if (darkModeMediaQuery.matches) {
-    document.body.classList.remove('light-mode');
+    document.body.classList.remove('light-mode'); // Or document.body.classList.add('dark-mode');
   } else {
-    document.body.classList.add('light-mode');
+    document.body.classList.add('light-mode'); // Or document.body.classList.remove('dark-mode');
   }
+  updateToggleModeButtonEmoji(toggleModeButton); // Set initial emoji
 
   document.querySelectorAll('select[multiple]').forEach(select => {
     select.addEventListener('change', (event) => {
