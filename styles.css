@@ -1,8 +1,12 @@
 :root {
   --neon-color: #87CEEB;
-  --glass-color: rgba(255, 255, 255, 0.2);
+  --glass-color: rgba(255, 255, 255, 0.25); /* Slightly increased opacity */
   --accent-color: #1f2937;
   --sky-blue-color: #87CEEB; 
+  --light-mode-bg: #f3f4f6;
+  --dark-mode-text: #e2e8f0;
+  --light-mode-text: #1f2937;
+  --light-mode-text-rgb: 31, 41, 55; /* For use in rgba */
 }
 
 body {
@@ -33,7 +37,7 @@ body.dark-mode {
   align-items: center;
   width: 100%;
   max-width: 800px;
-  margin-bottom: 20px;
+  margin-bottom: 30px; /* Increased */
 }
 
 .controls-container {
@@ -47,8 +51,8 @@ body.dark-mode {
   align-items: center;
   gap: 8px; /* Space between label and checkbox */
   background-color: var(--glass-color);
-  padding: 8px 15px; /* Similar padding to button but adjusted for label+checkbox */
-  border-radius: 10px;
+  padding: 8px 15px;
+  border-radius: 8px; /* Updated */
   border: 2px solid var(--neon-color);
   color: var(--neon-color);
   font-size: 0.9rem; /* Match button text style a bit */
@@ -69,14 +73,15 @@ body.dark-mode {
 .header h1 {
   font-size: 2.5rem;
   color: inherit;
+  font-weight: 700; /* Explicit font weight */
 }
 
 .mode-toggle button {
   background-color: var(--glass-color);
   border: 2px solid var(--neon-color);
   color: var(--neon-color);
-  padding: 10px 20px;
-  border-radius: 10px;
+  padding: 10px 14px; /* Updated for emoji */
+  border-radius: 8px; /* Updated */
   cursor: pointer;
   transform: scale(1);
   box-shadow: none;
@@ -106,15 +111,15 @@ body.dark-mode {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 35px; /* Increased */
 }
 
 .search-bar input[type="text"] {
   width: 100%;
-  padding: 10px;
+  padding: 12px; /* Updated */
   margin-bottom: 10px;
   border: 2px solid var(--neon-color);
-  border-radius: 10px;
+  border-radius: 8px; /* Updated */
   background-color: var(--glass-color);
   color: inherit;
   box-shadow: none;
@@ -140,9 +145,9 @@ body.dark-mode {
 
 .site-selector select, .filetype-selector select, .anime-site-selector select, .kdrama-site-selector select, .kdrama-filetype-selector select, .book-site-selector select, .book-filetype-selector select {
   width: 100%;
-  padding: 10px;
+  padding: 12px; /* Updated */
   border: 2px solid var(--neon-color);
-  border-radius: 10px;
+  border-radius: 8px; /* Updated */
   background-color: var(--glass-color);
   color: inherit;
   box-shadow: none;
@@ -185,9 +190,9 @@ body.dark-mode {
 
 .site-selector input[type="text"] {
   width: 100%;
-  padding: 10px;
+  padding: 12px; /* Updated */
   border: 2px solid var(--neon-color);
-  border-radius: 10px;
+  border-radius: 8px; /* Updated */
   background-color: var(--glass-color);
   color: inherit;
   box-shadow: none;
@@ -208,11 +213,13 @@ body.dark-mode {
   background-color: var(--neon-color);
   border: none;
   color: #1f2937;
-  padding: 10px 20px;
-  border-radius: 10px;
+  padding: 12px 20px; /* Updated */
+  border-radius: 8px; /* Updated */
+  font-weight: 600; /* Added */
   cursor: pointer;
   transform: scale(1);
   box-shadow: none;
+  margin-top: 15px; /* Added */
   transition: background-color 0.3s, transform 0.2s ease-out, box-shadow 0.2s ease-out;
 }
 
@@ -234,11 +241,12 @@ body.dark-mode {
 
 .search-history, .bookmark-folders {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 35px; /* Increased */
 }
 
 .search-history h2, .bookmark-folders h2 {
   font-size: 1.5rem;
+  font-weight: 600; /* Explicit font weight */
   margin-bottom: 10px;
   color: inherit;
 }
@@ -252,8 +260,8 @@ body.dark-mode {
 .search-history li, .bookmark-folders li {
   background-color: var(--glass-color);
   margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 10px; /* Keeping this padding for list items */
+  border-radius: 8px; /* Updated for consistency */
   transition: background-color 0.3s;
 }
 
@@ -262,12 +270,12 @@ body.dark-mode {
 }
 
 body.light-mode {
-  background-color: #f3f4f6;
-  color: #1f2937;
+  background-color: var(--light-mode-bg);
+  color: var(--light-mode-text);
 }
 
 body.light-mode .ash-toggle {
-  background-color: rgba(229, 231, 235, 0.5);
+  background-color: rgba(var(--light-mode-text-rgb), 0.05); /* Subtle dark glass on light bg */
   border-color: var(--neon-color);
   color: var(--accent-color);
 }
@@ -366,7 +374,7 @@ body.light-mode .site-selector input[type="text"]:focus {
 
 body.light-mode .search-bar button, .anime-search .search-bar button, .kdrama-search .search-bar button, .book-search .search-bar button {
   background-color: var(--neon-color);
-  color: #ffffff;
+  color: #1f2937; /* Changed from #ffffff for better contrast on neon-color */
   /* transform and box-shadow transitions are already inherited */
 }
 
@@ -429,11 +437,12 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
 
 .anime-search {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 35px; /* Increased */
 }
 
 .anime-search h2 {
   font-size: 1.5rem;
+  font-weight: 600; /* Explicit font weight */
   margin-bottom: 10px;
   color: inherit;
 }
@@ -447,9 +456,9 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
 
 .anime-search .anime-site-selector select {
   width: 100%;
-  padding: 10px;
+  padding: 12px; /* Updated */
   border: 2px solid var(--neon-color);
-  border-radius: 10px;
+  border-radius: 8px; /* Updated */
   background-color: var(--glass-color);
   color: inherit;
   box-shadow: none; /* Base state for specific selectors */
@@ -458,7 +467,6 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
 
 /* .anime-search .anime-site-selector select:hover is covered by grouped selectors */
 /* .anime-search .anime-site-selector select:focus is covered by grouped selectors */
-}
 
 .anime-search .anime-filetype-selector {
   display: flex;
@@ -469,9 +477,9 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
 
 .anime-search .anime-filetype-selector select {
   width: 100%;
-  padding: 10px;
+  padding: 12px; /* Updated */
   border: 2px solid var(--neon-color);
-  border-radius: 10px;
+  border-radius: 8px; /* Updated */
   background-color: var(--glass-color);
   color: inherit;
   box-shadow: none; /* Base state for specific selectors */
@@ -480,15 +488,16 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
 
 /* .anime-search .anime-filetype-selector select:hover is covered by grouped selectors */
 /* .anime-search .anime-filetype-selector select:focus is covered by grouped selectors */
-}
 
 .anime-search .search-bar button {
   background-color: var(--neon-color);
   border: none;
   color: #1f2937;
-  padding: 10px 20px;
-  border-radius: 10px;
+  padding: 12px 20px; /* Updated */
+  border-radius: 8px; /* Updated */
+  font-weight: 600; /* Added */
   cursor: pointer;
+  margin-top: 15px; /* Added */
   transition: background-color 0.3s;
 }
 
@@ -498,11 +507,12 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
 
 .kdrama-search {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 35px; /* Increased */
 }
 
 .kdrama-search h2 {
   font-size: 1.5rem;
+  font-weight: 600; /* Ensured */
   margin-bottom: 10px;
   color: inherit;
 }
@@ -516,9 +526,9 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
 
 .kdrama-search .kdrama-site-selector select {
   width: 100%;
-  padding: 10px;
+  padding: 12px; /* Updated */
   border: 2px solid var(--neon-color);
-  border-radius: 10px;
+  border-radius: 8px; /* Updated */
   background-color: var(--glass-color);
   color: inherit;
   box-shadow: none; /* Base state for specific selectors */
@@ -527,7 +537,6 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
 
 /* .kdrama-search .kdrama-site-selector select:hover is covered by grouped selectors */
 /* .kdrama-search .kdrama-site-selector select:focus is covered by grouped selectors */
-}
 
 .kdrama-search .kdrama-filetype-selector {
   display: flex;
@@ -538,9 +547,9 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
 
 .kdrama-search .kdrama-filetype-selector select {
   width: 100%;
-  padding: 10px;
+  padding: 12px; /* Updated */
   border: 2px solid var(--neon-color);
-  border-radius: 10px;
+  border-radius: 8px; /* Updated */
   background-color: var(--glass-color);
   color: inherit;
   box-shadow: none; /* Base state for specific selectors */
@@ -549,15 +558,16 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
 
 /* .kdrama-search .kdrama-filetype-selector select:hover is covered by grouped selectors */
 /* .kdrama-search .kdrama-filetype-selector select:focus is covered by grouped selectors */
-}
 
 .kdrama-search .search-bar button {
   background-color: var(--neon-color);
   border: none;
   color: #1f2937;
-  padding: 10px 20px;
-  border-radius: 10px;
+  padding: 12px 20px; /* Updated */
+  border-radius: 8px; /* Updated */
+  font-weight: 600; /* Added */
   cursor: pointer;
+  margin-top: 15px; /* Added */
   transition: background-color 0.3s;
 }
 
@@ -567,11 +577,12 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
 
 .book-search {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 35px; /* Increased */
 }
 
 .book-search h2 {
   font-size: 1.5rem;
+  font-weight: 600; /* Ensured */
   margin-bottom: 10px;
   color: inherit;
 }
@@ -585,9 +596,9 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
 
 .book-search .book-site-selector select {
   width: 100%;
-  padding: 10px;
+  padding: 12px; /* Updated */
   border: 2px solid var(--neon-color);
-  border-radius: 10px;
+  border-radius: 8px; /* Updated */
   background-color: var(--glass-color);
   color: inherit;
   box-shadow: none; /* Base state for specific selectors */
@@ -596,7 +607,6 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
 
 /* .book-search .book-site-selector select:hover is covered by grouped selectors */
 /* .book-search .book-site-selector select:focus is covered by grouped selectors */
-}
 
 .book-search .book-filetype-selector {
   display: flex;
@@ -607,9 +617,9 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
 
 .book-search .book-filetype-selector select {
   width: 100%;
-  padding: 10px;
+  padding: 12px; /* Updated */
   border: 2px solid var(--neon-color);
-  border-radius: 10px;
+  border-radius: 8px; /* Updated */
   background-color: var(--glass-color);
   color: inherit;
   box-shadow: none; /* Base state for specific selectors */
@@ -618,15 +628,16 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
 
 /* .book-search .book-filetype-selector select:hover is covered by grouped selectors */
 /* .book-search .book-filetype-selector select:focus is covered by grouped selectors */
-}
 
 .book-search .search-bar button {
   background-color: var(--neon-color);
   border: none;
   color: #1f2937;
-  padding: 10px 20px;
-  border-radius: 10px;
+  padding: 12px 20px; /* Updated */
+  border-radius: 8px; /* Updated */
+  font-weight: 600; /* Added */
   cursor: pointer;
+  margin-top: 15px; /* Added */
   transition: background-color 0.3s;
 }
 
@@ -640,6 +651,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 }
+/* Removed problematic global text-shadow
 * 
 * {
   text-shadow: -1px -1px 0 white,  
@@ -647,6 +659,7 @@ body {
               -1px  1px 0 white,  
                1px  1px 0 white;
 }
+*/
 @keyframes fallingAshes {
   0% {
     transform: translateY(-10vh) translateX(0);
@@ -705,7 +718,7 @@ body {
   background-color: var(--glass-color); /* Use existing glass color for consistency */
   border: 1px solid var(--neon-color); /* Neon border */
   border-top: none; /* Remove top border as it's below the input */
-  border-radius: 0 0 10px 10px; /* Rounded bottom corners */
+  border-radius: 0 0 8px 8px; /* Rounded bottom corners, updated to match 8px */
   margin-top: -10px; /* Overlap slightly with the input field's bottom margin if any, or adjust as needed */
   padding-top: 10px; /* Add padding to separate from input field */
   z-index: 100; /* Ensure it's above other elements */
