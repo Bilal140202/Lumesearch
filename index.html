@@ -9,8 +9,14 @@
   <div class="app">
     <header class="header">
       <h1>LumeSearch</h1>
-      <div class="mode-toggle">
-        <button id="toggle-mode">Toggle Mode</button>
+      <div class="controls-container">
+        <div class="mode-toggle">
+          <button id="toggle-mode">Toggle Mode</button>
+        </div>
+        <div class="ash-toggle">
+          <label for="toggle-ash" class="toggle-label">Ash FX</label>
+          <input type="checkbox" id="toggle-ash" class="toggle-checkbox" checked>
+        </div>
       </div>
     </header>
     <main class="main">
@@ -96,6 +102,7 @@
             </optgroup>
           </select>
         </div>
+        <div id="general-did-you-mean" class="did-you-mean-container"></div>
         <button id="search-button">Search</button>
       </section>
       <section class="anime-search">
@@ -135,6 +142,7 @@
             </optgroup>
           </select>
         </div>
+        <div id="anime-did-you-mean" class="did-you-mean-container"></div>
         <button id="anime-search-button">Search</button>
       </section>
       <section class="kdrama-search">
@@ -170,6 +178,7 @@
             </optgroup>
           </select>
         </div>
+        <div id="kdrama-did-you-mean" class="did-you-mean-container"></div>
         <button id="kdrama-search-button">Search</button>
       </section>
       <section class="book-search">
@@ -195,6 +204,7 @@
             </optgroup>
           </select>
         </div>
+        <div id="book-did-you-mean" class="did-you-mean-container"></div>
         <button id="book-search-button">Search</button>
       </section>
       <section class="search-history">
@@ -213,9 +223,6 @@
   </div>
   <script type="module" src="script.js"></script>
   <div class="ashes-container">
-  <div class="ash"></div>
-  <div class="ash"></div>
-  <div class="ash"></div>
   <div class="ash"></div>
   <div class="ash"></div>
   <div class="ash"></div>
