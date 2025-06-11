@@ -1,27 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lusitana&display=swap');
+
 :root {
-  --neon-color: #87CEEB;
-  --glass-color: rgba(255, 255, 255, 0.25); /* Slightly increased opacity */
-  --accent-color: #1f2937;
-  --sky-blue-color: #87CEEB; 
-  --light-mode-bg: #f3f4f6;
-  --dark-mode-text: #e2e8f0;
-  --light-mode-text: #1f2937;
-  --light-mode-text-rgb: 31, 41, 55; /* For use in rgba */
+  /* Fantasy Theme Variables */
+  --fantasy-font-heading: 'MedievalSharp', cursive;
+  --fantasy-font-body: 'Lusitana', serif;
+  --fantasy-primary-bg: #2a2a3e; /* Dark deep blue/purple for main page background */
+  --fantasy-secondary-bg: #f0e8d8; /* Aged parchment for content backgrounds */
+  --fantasy-primary-text: #e0e0e0; /* Light text for dark backgrounds */
+  --fantasy-secondary-text: #3b3b3b; /* Dark text for light backgrounds */
+  --fantasy-accent-gold: #ffd700; /* Gold for accents, borders, highlights */
+  --fantasy-accent-magic: #7b68ee; /* Medium Slate Blue / Magical glow for interactive elements */
+  --fantasy-border-color: #8b4513; /* SaddleBrown, like old leather or wood */
+  --fantasy-container-bg: rgba(40, 30, 20, 0.7); /* Dark, slightly transparent brown for containers, like dark wood */
+  --fantasy-hover-glow: rgba(255, 215, 0, 0.5); /* Gold glow for hover */
+
+  /* Old Variables - Commented Out */
+  /* --neon-color: #87CEEB; */
+  /* --glass-color: rgba(255, 255, 255, 0.25); */
+  /* --accent-color: #1f2937; */
+  /* --sky-blue-color: #87CEEB;  */
+  /* --light-mode-bg: #f3f4f6; */
+  /* --dark-mode-text: #e2e8f0; */
+  /* --light-mode-text: #1f2937; */
+  /* --light-mode-text-rgb: 31, 41, 55; */
 }
 
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
-  background-image: url(/images/12.jpeg); 
-  background-size: cover; 
-  background-attachment: fixed; 
-  color: #e2e8f0;
+  font-family: var(--fantasy-font-body);
+  background-color: var(--fantasy-primary-bg); /* Fallback */
+  background-image: linear-gradient(to bottom, #3c3c58, var(--fantasy-primary-bg)); /* Gradient */
+  color: var(--fantasy-primary-text);
   transition: background-color 0.5s, color 0.5s;
+  min-height: 100vh; /* Ensure gradient covers full height */
 }
 
 body.dark-mode {
-  background-color: var(--accent-color);
-  color: #e2e8f0;
+  /* This class might become redundant or be repurposed for a light fantasy theme if needed.
+     For now, the base body styles set the primary dark fantasy theme. */
 }
 
 .app {
@@ -29,6 +46,15 @@ body.dark-mode {
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  background-color: var(--fantasy-secondary-bg); /* Parchment */
+  color: var(--fantasy-secondary-text); /* Dark text for parchment */
+  border: 3px solid var(--fantasy-border-color); /* Leather/wood border */
+  border-radius: 8px; /* Softened corners */
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.5); /* Lift effect */
+  width: 100%; /* Ensure it takes up container width if not already */
+  max-width: 800px; /* Existing max-width */
+  margin-top: 20px; /* Add some space from top of viewport */
+  margin-bottom: 20px; /* Add some space from bottom of viewport */
 }
 
 .header {
@@ -37,66 +63,86 @@ body.dark-mode {
   align-items: center;
   width: 100%;
   max-width: 800px;
-  margin-bottom: 30px; /* Increased */
+  margin-bottom: 30px;
+  background-color: var(--fantasy-container-bg);
+  padding: 15px 20px;
+  border-bottom: 2px solid var(--fantasy-accent-gold);
+  box-sizing: border-box;
 }
 
 .controls-container {
   display: flex;
   align-items: center;
-  gap: 20px; /* Space between toggles */
+  gap: 20px;
 }
 
 .ash-toggle {
   display: flex;
   align-items: center;
-  gap: 8px; /* Space between label and checkbox */
-  background-color: var(--glass-color);
-  padding: 8px 15px;
-  border-radius: 8px; /* Updated */
-  border: 2px solid var(--neon-color);
-  color: var(--neon-color);
-  font-size: 0.9rem; /* Match button text style a bit */
+  gap: 8px;
+  background-color: transparent;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: none;
+  color: var(--fantasy-primary-text);
+  font-size: 0.9rem;
 }
 
 .ash-toggle .toggle-label {
   cursor: pointer;
+  font-family: var(--fantasy-font-body);
 }
 
 .ash-toggle .toggle-checkbox {
   cursor: pointer;
   width: 16px;
   height: 16px;
-  accent-color: var(--neon-color);
+  accent-color: var(--fantasy-accent-magic);
 }
 
 
 .header h1 {
-  font-size: 2.5rem;
-  color: inherit;
-  font-weight: 700; /* Explicit font weight */
+  font-family: var(--fantasy-font-heading);
+  color: var(--fantasy-accent-gold);
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px var(--fantasy-primary-bg), 0 0 5px var(--fantasy-accent-magic);
+  margin: 0;
+  animation: pulseMagicText 3s infinite alternate; /* Added animation */
 }
 
 .mode-toggle button {
-  background-color: var(--glass-color);
-  border: 2px solid var(--neon-color);
-  color: var(--neon-color);
-  padding: 10px 14px; /* Updated for emoji */
-  border-radius: 8px; /* Updated */
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: 2px solid var(--fantasy-accent-gold);
+  color: var(--fantasy-accent-gold);
+  padding: 5px 8px;
+  border-radius: 50%;
   cursor: pointer;
-  transform: scale(1);
+  line-height: 1;
+  transition: color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  transform: none;
   box-shadow: none;
-  transition: background-color 0.3s, border-color 0.3s, transform 0.2s ease-out, box-shadow 0.2s ease-out;
 }
 
 .mode-toggle button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: #ffed4a;
-  transform: scale(1.05);
-  box-shadow: 0 0 10px var(--neon-color);
+  color: var(--fantasy-accent-magic);
+  border-color: var(--fantasy-accent-magic);
+  box-shadow: 0 0 10px var(--fantasy-accent-magic);
+  background-color: transparent;
+  transform: none;
+}
+
+.mode-toggle button:focus {
+  outline: none;
+  color: var(--fantasy-accent-magic);
+  border-color: var(--fantasy-accent-magic);
+  box-shadow: 0 0 10px var(--fantasy-accent-magic);
 }
 
 .mode-toggle button:active {
-  transform: scale(0.95);
+  transform: translateY(1px);
+  border-style: solid;
 }
 
 .main {
@@ -107,33 +153,47 @@ body.dark-mode {
   max-width: 800px;
 }
 
-.search-bar {
+/* Styling for Search Section Containers */
+.search-bar,
+.anime-search,
+.kdrama-search,
+.book-search {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 35px; /* Increased */
+  background-color: rgba(0,0,0,0.1);
+  border: 1px dashed var(--fantasy-border-color);
+  padding: 15px;
+  margin-bottom: 30px;
+  border-radius: 6px;
+  box-sizing: border-box;
 }
 
 .search-bar input[type="text"] {
   width: 100%;
-  padding: 12px; /* Updated */
+  font-family: var(--fantasy-font-body);
+  color: var(--fantasy-primary-text);
+  background-color: var(--fantasy-container-bg);
+  border: 2px solid var(--fantasy-border-color);
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.5);
   margin-bottom: 10px;
-  border: 2px solid var(--neon-color);
-  border-radius: 8px; /* Updated */
-  background-color: var(--glass-color);
-  color: inherit;
-  box-shadow: none;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
+.search-bar input[type="text"]::placeholder {
+  color: rgba(224, 224, 224, 0.6);
+}
+
 .search-bar input[type="text"]:hover {
-  border-color: #add8e6; /* Light blue, less intense than neon */
-  box-shadow: 0 0 5px rgba(135, 206, 235, 0.3);
+  border-color: var(--fantasy-accent-gold);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 .search-bar input[type="text"]:focus {
-  border-color: #ffed4a;
-  box-shadow: 0 0 8px rgba(255, 237, 74, 0.7);
+  border-color: var(--fantasy-accent-magic);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.5), 0 0 5px var(--fantasy-accent-magic);
 }
 
 .site-selector, .filetype-selector, .anime-site-selector, .kdrama-site-selector, .kdrama-filetype-selector, .book-site-selector, .book-filetype-selector {
@@ -145,12 +205,13 @@ body.dark-mode {
 
 .site-selector select, .filetype-selector select, .anime-site-selector select, .kdrama-site-selector select, .kdrama-filetype-selector select, .book-site-selector select, .book-filetype-selector select {
   width: 100%;
-  padding: 12px; /* Updated */
-  border: 2px solid var(--neon-color);
-  border-radius: 8px; /* Updated */
-  background-color: var(--glass-color);
-  color: inherit;
-  box-shadow: none;
+  font-family: var(--fantasy-font-body);
+  color: var(--fantasy-primary-text);
+  background-color: var(--fantasy-container-bg);
+  border: 2px solid var(--fantasy-border-color);
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.5);
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
@@ -161,14 +222,14 @@ body.dark-mode {
 .kdrama-filetype-selector select:hover,
 .book-site-selector select:hover,
 .book-filetype-selector select:hover,
-.anime-search .anime-site-selector select:hover, /* Specific selectors hover */
+.anime-search .anime-site-selector select:hover,
 .anime-search .anime-filetype-selector select:hover,
 .kdrama-search .kdrama-site-selector select:hover,
 .kdrama-search .kdrama-filetype-selector select:hover,
 .book-search .book-site-selector select:hover,
 .book-search .book-filetype-selector select:hover {
-  border-color: #add8e6;
-  box-shadow: 0 0 5px rgba(135, 206, 235, 0.3);
+  border-color: var(--fantasy-accent-gold);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 .site-selector select:focus,
@@ -178,77 +239,100 @@ body.dark-mode {
 .kdrama-filetype-selector select:focus,
 .book-site-selector select:focus,
 .book-filetype-selector select:focus,
-.anime-search .anime-site-selector select:focus, /* Specific selectors focus */
+.anime-search .anime-site-selector select:focus,
 .anime-search .anime-filetype-selector select:focus,
 .kdrama-search .kdrama-site-selector select:focus,
 .kdrama-search .kdrama-filetype-selector select:focus,
 .book-search .book-site-selector select:focus,
 .book-search .book-filetype-selector select:focus {
-  border-color: #ffed4a;
-  box-shadow: 0 0 8px rgba(255, 237, 74, 0.7);
+  border-color: var(--fantasy-accent-magic);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.5), 0 0 5px var(--fantasy-accent-magic);
 }
 
 .site-selector input[type="text"] {
   width: 100%;
-  padding: 12px; /* Updated */
-  border: 2px solid var(--neon-color);
-  border-radius: 8px; /* Updated */
-  background-color: var(--glass-color);
-  color: inherit;
-  box-shadow: none;
+  font-family: var(--fantasy-font-body);
+  color: var(--fantasy-primary-text);
+  background-color: var(--fantasy-container-bg);
+  border: 2px solid var(--fantasy-border-color);
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.5);
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
+.site-selector input[type="text"]::placeholder {
+  color: rgba(224, 224, 224, 0.6);
+}
+
 .site-selector input[type="text"]:hover {
-  border-color: #add8e6;
-  box-shadow: 0 0 5px rgba(135, 206, 235, 0.3);
+  border-color: var(--fantasy-accent-gold);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 .site-selector input[type="text"]:focus {
-  border-color: #ffed4a;
-  box-shadow: 0 0 8px rgba(255, 237, 74, 0.7);
+  border-color: var(--fantasy-accent-magic);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.5), 0 0 5px var(--fantasy-accent-magic);
 }
 
-.search-bar button, .anime-search .search-bar button, .kdrama-search .search-bar button, .book-search .search-bar button {
-  background-color: var(--neon-color);
-  border: none;
-  color: #1f2937;
-  padding: 12px 20px; /* Updated */
-  border-radius: 8px; /* Updated */
-  font-weight: 600; /* Added */
+.search-bar button,
+.anime-search .search-bar button,
+.kdrama-search .search-bar button,
+.book-search .search-bar button {
+  font-family: var(--fantasy-font-heading);
+  color: var(--fantasy-accent-gold);
+  background-color: var(--fantasy-border-color);
+  border: 2px outset var(--fantasy-accent-gold);
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 1px #000;
   cursor: pointer;
-  transform: scale(1);
-  box-shadow: none;
-  margin-top: 15px; /* Added */
-  transition: background-color 0.3s, transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  margin-top: 15px;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
 .search-bar button:hover,
 .anime-search .search-bar button:hover,
 .kdrama-search .search-bar button:hover,
 .book-search .search-bar button:hover {
-  background-color: #ffed4a;
-  transform: scale(1.05);
-  box-shadow: 0 0 10px #ffed4a; /* Yellow glow on hover for these buttons */
+  background-color: #a45a1f;
+  border-color: var(--fantasy-accent-magic);
+  color: var(--fantasy-primary-text);
+  box-shadow: none;
+}
+
+.search-bar button:focus,
+.anime-search .search-bar button:focus,
+.kdrama-search .search-bar button:focus,
+.book-search .search-bar button:focus {
+  outline: none;
+  box-shadow: 0 0 8px var(--fantasy-accent-magic);
 }
 
 .search-bar button:active,
 .anime-search .search-bar button:active,
 .kdrama-search .search-bar button:active,
 .book-search .search-bar button:active {
-  transform: scale(0.95);
+  transform: translateY(1px);
+  border-style: inset;
 }
 
 .search-history, .bookmark-folders {
   width: 100%;
-  margin-bottom: 35px; /* Increased */
+  margin-bottom: 35px;
 }
 
-.search-history h2, .bookmark-folders h2 {
-  font-size: 1.5rem;
-  font-weight: 600; /* Explicit font weight */
-  margin-bottom: 10px;
-  color: inherit;
+.search-history h2, .bookmark-folders h2,
+.anime-search h2, .kdrama-search h2, .book-search h2 {
+  font-family: var(--fantasy-font-heading);
+  color: var(--fantasy-border-color);
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--fantasy-accent-gold);
+  font-weight: 600;
 }
 
 .search-history ul, .bookmark-folders ul {
@@ -258,15 +342,20 @@ body.dark-mode {
 }
 
 .search-history li, .bookmark-folders li {
-  background-color: var(--glass-color);
-  margin-bottom: 10px;
-  padding: 10px; /* Keeping this padding for list items */
-  border-radius: 8px; /* Updated for consistency */
-  transition: background-color 0.3s;
+  background-color: transparent;
+  border: 1px solid var(--fantasy-accent-gold);
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  color: var(--fantasy-secondary-text);
+  font-family: var(--fantasy-font-body);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .search-history li:hover, .bookmark-folders li:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--fantasy-container-bg);
+  color: var(--fantasy-primary-text);
+  border-color: var(--fantasy-accent-magic);
 }
 
 body.light-mode {
@@ -274,53 +363,88 @@ body.light-mode {
   color: var(--light-mode-text);
 }
 
+/* Light Mode for Search Section Containers */
+body.light-mode .search-bar,
+body.light-mode .anime-search,
+body.light-mode .kdrama-search,
+body.light-mode .book-search {
+  background-color: rgba(255,255,255,0.2);
+}
+
+/* Light Mode for Section Titles h2 */
+body.light-mode .search-history h2,
+body.light-mode .bookmark-folders h2,
+body.light-mode .anime-search h2,
+body.light-mode .kdrama-search h2,
+body.light-mode .book-search h2 {
+  color: var(--fantasy-border-color);
+  border-bottom-color: var(--fantasy-border-color);
+}
+
+
 body.light-mode .ash-toggle {
-  background-color: rgba(var(--light-mode-text-rgb), 0.05); /* Subtle dark glass on light bg */
-  border-color: var(--neon-color);
-  color: var(--accent-color);
+  background-color: transparent;
+  border: none;
+  color: var(--fantasy-secondary-text);
 }
 
 body.light-mode .ash-toggle .toggle-checkbox {
-  accent-color: var(--sky-blue-color);
+  accent-color: var(--fantasy-accent-magic);
 }
 
 body.light-mode .mode-toggle button {
-  color: var(--accent-color);
-  border-color: var(--neon-color);
-  /* transform and box-shadow transitions are already inherited */
+  border: 2px solid var(--fantasy-border-color);
+  color: var(--fantasy-border-color);
+  background-color: transparent;
 }
 
 body.light-mode .mode-toggle button:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-  border-color: #ffed4a;
-  transform: scale(1.05); /* Ensure transform is applied in light mode too */
-  box-shadow: 0 0 10px var(--neon-color);
+  color: var(--fantasy-accent-magic);
+  border-color: var(--fantasy-accent-magic);
+  box-shadow: 0 0 10px var(--fantasy-accent-magic);
+  background-color: transparent;
+}
+
+body.light-mode .mode-toggle button:focus {
+  outline: none;
+  color: var(--fantasy-accent-magic);
+  border-color: var(--fantasy-accent-magic);
+  box-shadow: 0 0 10px var(--fantasy-accent-magic);
 }
 
 body.light-mode .mode-toggle button:active {
-  transform: scale(0.95);
+  transform: translateY(1px);
+  border-style: solid;
 }
 
 body.light-mode .search-bar input[type="text"] {
-  background-color: #ffffff;
-  border-color: var(--neon-color);
-  /* box-shadow and transition are inherited or overridden below for focus */
+  font-family: var(--fantasy-font-body);
+  color: var(--fantasy-secondary-text);
+  background-color: var(--fantasy-secondary-bg);
+  border: 2px solid var(--fantasy-border-color);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+body.light-mode .search-bar input[type="text"]::placeholder {
+  color: rgba(59, 59, 59, 0.6);
 }
 
 body.light-mode .search-bar input[type="text"]:hover {
-  border-color: #add8e6; /* Consistent hover for light mode */
-  box-shadow: 0 0 5px rgba(135, 206, 235, 0.3);
+  border-color: var(--fantasy-accent-magic);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
 }
 
 body.light-mode .search-bar input[type="text"]:focus {
-  border-color: #ffed4a;
-  box-shadow: 0 0 8px rgba(255, 237, 74, 0.7); /* Consistent focus shadow */
+  border-color: var(--fantasy-accent-gold);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2), 0 0 5px var(--fantasy-accent-gold);
 }
 
 body.light-mode .site-selector select, .filetype-selector select, .anime-site-selector select, .kdrama-site-selector select, .kdrama-filetype-selector select, .book-site-selector select, .book-filetype-selector select {
-  background-color: #ffffff;
-  border-color: var(--neon-color);
-  /* box-shadow and transition are inherited or overridden below for focus */
+  font-family: var(--fantasy-font-body);
+  color: var(--fantasy-secondary-text);
+  background-color: var(--fantasy-secondary-bg);
+  border: 2px solid var(--fantasy-border-color);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
 }
 
 body.light-mode .site-selector select:hover,
@@ -330,14 +454,14 @@ body.light-mode .kdrama-site-selector select:hover,
 body.light-mode .kdrama-filetype-selector select:hover,
 body.light-mode .book-site-selector select:hover,
 body.light-mode .book-filetype-selector select:hover,
-body.light-mode .anime-search .anime-site-selector select:hover,
+.body.light-mode .anime-search .anime-site-selector select:hover,
 body.light-mode .anime-search .anime-filetype-selector select:hover,
 body.light-mode .kdrama-search .kdrama-site-selector select:hover,
 body.light-mode .kdrama-search .kdrama-filetype-selector select:hover,
 body.light-mode .book-search .book-site-selector select:hover,
 body.light-mode .book-search .book-filetype-selector select:hover {
-  border-color: #add8e6;
-  box-shadow: 0 0 5px rgba(135, 206, 235, 0.3);
+  border-color: var(--fantasy-accent-magic);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
 }
 
 body.light-mode .site-selector select:focus,
@@ -347,104 +471,95 @@ body.light-mode .kdrama-site-selector select:focus,
 body.light-mode .kdrama-filetype-selector select:focus,
 body.light-mode .book-site-selector select:focus,
 body.light-mode .book-filetype-selector select:focus,
-body.light-mode .anime-search .anime-site-selector select:focus,
+.body.light-mode .anime-search .anime-site-selector select:focus,
 body.light-mode .anime-search .anime-filetype-selector select:focus,
 body.light-mode .kdrama-search .kdrama-site-selector select:focus,
 body.light-mode .kdrama-search .kdrama-filetype-selector select:focus,
 body.light-mode .book-search .book-site-selector select:focus,
 body.light-mode .book-search .book-filetype-selector select:focus {
-  border-color: #ffed4a;
-  box-shadow: 0 0 8px rgba(255, 237, 74, 0.7); /* Consistent focus shadow */
+  border-color: var(--fantasy-accent-gold);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2), 0 0 5px var(--fantasy-accent-gold);
 }
 
 body.light-mode .site-selector input[type="text"] {
-  background-color: #ffffff;
-  border-color: var(--neon-color);
+  font-family: var(--fantasy-font-body);
+  color: var(--fantasy-secondary-text);
+  background-color: var(--fantasy-secondary-bg);
+  border: 2px solid var(--fantasy-border-color);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+body.light-mode .site-selector input[type="text"]::placeholder {
+  color: rgba(59, 59, 59, 0.6);
 }
 
 body.light-mode .site-selector input[type="text"]:hover {
-  border-color: #add8e6;
-  box-shadow: 0 0 5px rgba(135, 206, 235, 0.3);
+  border-color: var(--fantasy-accent-magic);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
 }
 
 body.light-mode .site-selector input[type="text"]:focus {
-  border-color: #ffed4a;
-  box-shadow: 0 0 8px rgba(255, 237, 74, 0.7);
+  border-color: var(--fantasy-accent-gold);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2), 0 0 5px var(--fantasy-accent-gold);
 }
 
-body.light-mode .search-bar button, .anime-search .search-bar button, .kdrama-search .search-bar button, .book-search .search-bar button {
-  background-color: var(--neon-color);
-  color: #1f2937; /* Changed from #ffffff for better contrast on neon-color */
-  /* transform and box-shadow transitions are already inherited */
+body.light-mode .search-bar button,
+body.light-mode .anime-search .search-bar button,
+body.light-mode .kdrama-search .search-bar button,
+body.light-mode .book-search .search-bar button {
+  font-family: var(--fantasy-font-heading);
+  color: var(--fantasy-secondary-text);
+  background-color: var(--fantasy-secondary-bg);
+  border: 2px outset var(--fantasy-border-color);
+  text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
 }
 
 body.light-mode .search-bar button:hover,
 body.light-mode .anime-search .search-bar button:hover,
 body.light-mode .kdrama-search .search-bar button:hover,
 body.light-mode .book-search .search-bar button:hover {
-  background-color: #ffed4a;
-  color: #1f2937;
-  transform: scale(1.05); /* Ensure transform is applied in light mode too */
-  box-shadow: 0 0 10px #ffed4a;
+  background-color: #dcd0c0;
+  border-color: var(--fantasy-accent-gold);
+  color: var(--fantasy-accent-gold);
+}
+
+body.light-mode .search-bar button:focus,
+body.light-mode .anime-search .search-bar button:focus,
+body.light-mode .kdrama-search .search-bar button:focus,
+body.light-mode .book-search .search-bar button:focus {
+  outline: none;
+  box-shadow: 0 0 8px var(--fantasy-accent-gold);
 }
 
 body.light-mode .search-bar button:active,
 body.light-mode .anime-search .search-bar button:active,
 body.light-mode .kdrama-search .search-bar button:active,
 body.light-mode .book-search .search-bar button:active {
-  transform: scale(0.95);
+  transform: translateY(1px);
+  border-style: inset;
 }
 
 body.light-mode .search-history li, .bookmark-folders li {
-  background-color: #ffffff;
-  color: #1f2937;
+  border-color: var(--fantasy-border-color);
+  background-color: transparent;
+  color: var(--fantasy-secondary-text);
 }
 
-body.light-mode .search-history li:hover, .bookmark-folders li:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+body.light-mode .search-history li:hover,
+body.light-mode .bookmark-folders li:hover {
+  background-color: var(--fantasy-border-color);
+  color: var(--fantasy-secondary-bg);
+  border-color: var(--fantasy-accent-gold);
 }
 
-@keyframes neon-glow {
-  from {
-    filter: drop-shadow(0 0 5px var(--neon-color)) drop-shadow(0 0 20px var(--neon-color));
-  }
-  to {
-    filter: drop-shadow(0 0 15px var(--neon-color)) drop-shadow(0 0 30px var(--neon-color));
-  }
-}
+/* Removed old @keyframes neon-glow */
 
-.header h1 {
-  animation: neon-glow 1.5s alternate infinite;
-}
+/* Removed .header h1 old animation rule */
 
-.mode-toggle button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: none;
-  mask: inherit;
-  background-size: 400% 400%;
-  animation: neon-glow 5s linear infinite;
-  z-index: -1;
-}
-
-.mode-toggle button:hover::before {
-  animation: neon-glow 3s linear infinite;
-}
+/* Removed .mode-toggle button::before and its hover state */
 
 .anime-search {
   width: 100%;
-  margin-bottom: 35px; /* Increased */
-}
-
-.anime-search h2 {
-  font-size: 1.5rem;
-  font-weight: 600; /* Explicit font weight */
-  margin-bottom: 10px;
-  color: inherit;
 }
 
 .anime-search .anime-site-selector {
@@ -454,19 +569,7 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
   width: 100%;
 }
 
-.anime-search .anime-site-selector select {
-  width: 100%;
-  padding: 12px; /* Updated */
-  border: 2px solid var(--neon-color);
-  border-radius: 8px; /* Updated */
-  background-color: var(--glass-color);
-  color: inherit;
-  box-shadow: none; /* Base state for specific selectors */
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-/* .anime-search .anime-site-selector select:hover is covered by grouped selectors */
-/* .anime-search .anime-site-selector select:focus is covered by grouped selectors */
+/* Removed redundant .anime-search .anime-site-selector select rule block */
 
 .anime-search .anime-filetype-selector {
   display: flex;
@@ -475,46 +578,18 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
   width: 100%;
 }
 
-.anime-search .anime-filetype-selector select {
-  width: 100%;
-  padding: 12px; /* Updated */
-  border: 2px solid var(--neon-color);
-  border-radius: 8px; /* Updated */
-  background-color: var(--glass-color);
-  color: inherit;
-  box-shadow: none; /* Base state for specific selectors */
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-/* .anime-search .anime-filetype-selector select:hover is covered by grouped selectors */
-/* .anime-search .anime-filetype-selector select:focus is covered by grouped selectors */
+/* Removed redundant .anime-search .anime-filetype-selector select rule block */
 
 .anime-search .search-bar button {
-  background-color: var(--neon-color);
-  border: none;
-  color: #1f2937;
-  padding: 12px 20px; /* Updated */
-  border-radius: 8px; /* Updated */
-  font-weight: 600; /* Added */
-  cursor: pointer;
-  margin-top: 15px; /* Added */
-  transition: background-color 0.3s;
+  /* Styles covered by grouped search button rule */
 }
 
 .anime-search .search-bar button:hover {
-  background-color: #ffed4a;
+  /* Styles covered by grouped search button hover rule */
 }
 
 .kdrama-search {
   width: 100%;
-  margin-bottom: 35px; /* Increased */
-}
-
-.kdrama-search h2 {
-  font-size: 1.5rem;
-  font-weight: 600; /* Ensured */
-  margin-bottom: 10px;
-  color: inherit;
 }
 
 .kdrama-search .kdrama-site-selector {
@@ -524,19 +599,7 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
   width: 100%;
 }
 
-.kdrama-search .kdrama-site-selector select {
-  width: 100%;
-  padding: 12px; /* Updated */
-  border: 2px solid var(--neon-color);
-  border-radius: 8px; /* Updated */
-  background-color: var(--glass-color);
-  color: inherit;
-  box-shadow: none; /* Base state for specific selectors */
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-/* .kdrama-search .kdrama-site-selector select:hover is covered by grouped selectors */
-/* .kdrama-search .kdrama-site-selector select:focus is covered by grouped selectors */
+/* Removed redundant .kdrama-search .kdrama-site-selector select rule block */
 
 .kdrama-search .kdrama-filetype-selector {
   display: flex;
@@ -545,46 +608,18 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
   width: 100%;
 }
 
-.kdrama-search .kdrama-filetype-selector select {
-  width: 100%;
-  padding: 12px; /* Updated */
-  border: 2px solid var(--neon-color);
-  border-radius: 8px; /* Updated */
-  background-color: var(--glass-color);
-  color: inherit;
-  box-shadow: none; /* Base state for specific selectors */
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-/* .kdrama-search .kdrama-filetype-selector select:hover is covered by grouped selectors */
-/* .kdrama-search .kdrama-filetype-selector select:focus is covered by grouped selectors */
+/* Removed redundant .kdrama-search .kdrama-filetype-selector select rule block */
 
 .kdrama-search .search-bar button {
-  background-color: var(--neon-color);
-  border: none;
-  color: #1f2937;
-  padding: 12px 20px; /* Updated */
-  border-radius: 8px; /* Updated */
-  font-weight: 600; /* Added */
-  cursor: pointer;
-  margin-top: 15px; /* Added */
-  transition: background-color 0.3s;
+  /* Styles covered by grouped search button rule */
 }
 
 .kdrama-search .search-bar button:hover {
-  background-color: #ffed4a;
+  /* Styles covered by grouped search button hover rule */
 }
 
 .book-search {
   width: 100%;
-  margin-bottom: 35px; /* Increased */
-}
-
-.book-search h2 {
-  font-size: 1.5rem;
-  font-weight: 600; /* Ensured */
-  margin-bottom: 10px;
-  color: inherit;
 }
 
 .book-search .book-site-selector {
@@ -594,19 +629,7 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
   width: 100%;
 }
 
-.book-search .book-site-selector select {
-  width: 100%;
-  padding: 12px; /* Updated */
-  border: 2px solid var(--neon-color);
-  border-radius: 8px; /* Updated */
-  background-color: var(--glass-color);
-  color: inherit;
-  box-shadow: none; /* Base state for specific selectors */
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-/* .book-search .book-site-selector select:hover is covered by grouped selectors */
-/* .book-search .book-site-selector select:focus is covered by grouped selectors */
+/* Removed redundant .book-search .book-site-selector select rule block */
 
 .book-search .book-filetype-selector {
   display: flex;
@@ -615,66 +638,36 @@ body.light-mode .search-history li:hover, .bookmark-folders li:hover {
   width: 100%;
 }
 
-.book-search .book-filetype-selector select {
-  width: 100%;
-  padding: 12px; /* Updated */
-  border: 2px solid var(--neon-color);
-  border-radius: 8px; /* Updated */
-  background-color: var(--glass-color);
-  color: inherit;
-  box-shadow: none; /* Base state for specific selectors */
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-/* .book-search .book-filetype-selector select:hover is covered by grouped selectors */
-/* .book-search .book-filetype-selector select:focus is covered by grouped selectors */
+/* Removed redundant .book-search .book-filetype-selector select rule block */
 
 .book-search .search-bar button {
-  background-color: var(--neon-color);
-  border: none;
-  color: #1f2937;
-  padding: 12px 20px; /* Updated */
-  border-radius: 8px; /* Updated */
-  font-weight: 600; /* Added */
-  cursor: pointer;
-  margin-top: 15px; /* Added */
-  transition: background-color 0.3s;
+  /* Styles covered by grouped search button rule */
 }
 
 .book-search .search-bar button:hover {
-  background-color: #ffed4a;
+  /* Styles covered by grouped search button hover rule */
 }
 
-body {
-    background-image: url('https://raw.githubusercontent.com/Bilal140202/Lumesearch/refs/heads/main/peakpx.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-/* Removed problematic global text-shadow
-* 
-* {
-  text-shadow: -1px -1px 0 white,  
-               1px -1px 0 white,  
-              -1px  1px 0 white,  
-               1px  1px 0 white;
-}
-*/
-@keyframes fallingAshes {
+/* Removed duplicate body background-image rule, it's at the top */
+
+/* Removed problematic global text-shadow */
+
+/* Renamed and updated sparkle animation */
+@keyframes fallingSparkles {
   0% {
-    transform: translateY(-10vh) translateX(0);
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
     opacity: 0;
   }
   20% {
     opacity: 1;
   }
   100% {
-    transform: translateY(100vh) translateX(-10vw);
+    transform: translateY(100vh) translateX(-10vw) rotate(360deg);
     opacity: 0;
   }
 }
 
-.ashes-container {
+.sparkles-container { /* Renamed from .ashes-container */
   position: fixed;
   top: 0;
   left: 0;
@@ -682,94 +675,103 @@ body {
   height: 100%;
   pointer-events: none;
   overflow: hidden;
+  z-index: -1; /* Ensure it's behind content */
 }
 
-.ash {
+.sparkle { /* Renamed from .ash */
   position: absolute;
-  width: 2px; /* Smaller */
-  height: 2px; /* Smaller */
-  background: rgba(200, 200, 200, 0.4); /* More transparent */
+  width: 3px; /* Updated */
+  height: 3px; /* Updated */
+  background: var(--fantasy-accent-gold); /* Updated */
   opacity: 0;
   border-radius: 50%;
-  animation: fallingAshes linear infinite;
+  animation: fallingSparkles linear infinite; /* Updated animation name */
+  box-shadow: 0 0 3px var(--fantasy-accent-gold), 0 0 5px var(--fantasy-accent-magic); /* Added shadow */
 }
 
-.ash:nth-child(1) { left: 10%; animation-duration: 10s; animation-delay: 0s; } /* Slower */
-.ash:nth-child(2) { left: 20%; animation-duration: 12s; animation-delay: 2s; } /* Slower */
-.ash:nth-child(3) { left: 30%; animation-duration: 9s; animation-delay: 1s; }  /* Slower */
-.ash:nth-child(4) { left: 40%; animation-duration: 11s; animation-delay: 3s; } /* Slower */
-.ash:nth-child(5) { left: 55%; animation-duration: 13s; animation-delay: 4s; } /* Slower */
-.ash:nth-child(6) { left: 70%; animation-duration: 10.5s; animation-delay: 1.5s; }/* Slower */
-/* Hide extra ashes */
-.ash:nth-child(7),
-.ash:nth-child(8),
-.ash:nth-child(9) {
-  display: none;
-}
+/* Adjusted durations for a slower, more whimsical effect */
+.sparkle:nth-child(1) { left: 10%; animation-duration: 15s; animation-delay: 0s; }
+.sparkle:nth-child(2) { left: 20%; animation-duration: 18s; animation-delay: 3s; }
+.sparkle:nth-child(3) { left: 30%; animation-duration: 14s; animation-delay: 1.5s; }
+.sparkle:nth-child(4) { left: 40%; animation-duration: 17s; animation-delay: 4.5s; }
+.sparkle:nth-child(5) { left: 55%; animation-duration: 20s; animation-delay: 6s; }
+.sparkle:nth-child(6) { left: 70%; animation-duration: 16s; animation-delay: 2s; }
 
-.ashes-container.ash-animation-disabled {
+.sparkles-container.ash-animation-disabled { /* Kept JS class name for now */
   display: none !important;
+}
+
+/* Header H1 pulse animation */
+@keyframes pulseMagicText {
+  0%, 100% { text-shadow: 1px 1px 2px var(--fantasy-primary-bg), 0 0 5px var(--fantasy-accent-magic); }
+  50% { text-shadow: 1px 1px 2px var(--fantasy-primary-bg), 0 0 10px var(--fantasy-accent-magic), 0 0 15px var(--fantasy-accent-gold); }
 }
 
 /* Suggestions List Styles */
 .suggestions-list {
-  position: relative; /* Changed from absolute to relative for better flow */
-  width: 100%; /* Match the input field width */
-  background-color: var(--glass-color); /* Use existing glass color for consistency */
-  border: 1px solid var(--neon-color); /* Neon border */
-  border-top: none; /* Remove top border as it's below the input */
-  border-radius: 0 0 8px 8px; /* Rounded bottom corners, updated to match 8px */
-  margin-top: -10px; /* Overlap slightly with the input field's bottom margin if any, or adjust as needed */
-  padding-top: 10px; /* Add padding to separate from input field */
-  z-index: 100; /* Ensure it's above other elements */
-  max-height: 200px; /* Prevent list from becoming too long */
-  overflow-y: auto; /* Add scroll if items exceed max-height */
-  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+  position: relative;
+  width: 100%;
+  background-color: var(--fantasy-secondary-bg); /* UPDATED */
+  border: 1px solid var(--fantasy-border-color);   /* UPDATED */
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  margin-top: -10px;
+  padding-top: 10px;
+  z-index: 100;
+  max-height: 200px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  color: var(--fantasy-secondary-text); /* UPDATED */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* UPDATED */
 }
 
 .suggestion-item {
   padding: 10px;
   cursor: pointer;
-  color: inherit; /* Inherit text color from body */
+  color: var(--fantasy-secondary-text); /* UPDATED */
+  font-family: var(--fantasy-font-body); /* UPDATED */
   font-size: 0.9rem;
-  border-bottom: 1px solid rgba(135, 206, 235, 0.3); /* Lighter neon for separators */
+  border-bottom: 1px solid var(--fantasy-border-color); /* UPDATED */
 }
 
 .suggestion-item:last-child {
-  border-bottom: none; /* No border for the last item */
+  border-bottom: none;
 }
 
 .suggestion-item:hover {
-  background-color: rgba(135, 206, 235, 0.2); /* Light neon hover effect */
+  background-color: var(--fantasy-container-bg); /* UPDATED */
+  color: var(--fantasy-primary-text); /* UPDATED */
 }
 
 /* Adjustments for light mode if necessary */
 body.light-mode .suggestions-list {
-  background-color: #ffffff; /* Lighter background for light mode */
-  border: 1px solid var(--neon-color);
-  border-top: none;
-  color: #1f2937; /* Darker text for light mode */
+  background-color: var(--fantasy-primary-bg); /* UPDATED */
+  border: 1px solid var(--fantasy-accent-gold);   /* UPDATED */
+  border-top: none; /* Keep */
+  color: var(--fantasy-primary-text); /* UPDATED */
 }
 
 body.light-mode .suggestion-item {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Lighter separator for light mode */
+  color: var(--fantasy-primary-text); /* UPDATED */
+  border-bottom: 1px solid var(--fantasy-accent-gold); /* UPDATED */
 }
 
 body.light-mode .suggestion-item:hover {
-  background-color: rgba(0, 0, 0, 0.05); /* Subtle hover for light mode */
+  background-color: #3c3c58; /* lighten(--fantasy-primary-bg, 10%) */ /* UPDATED */
+  color: var(--fantasy-accent-gold); /* UPDATED */
 }
 
 /* "Did You Mean" Feature Styles */
 .did-you-mean-container {
-  margin-top: 8px;
-  margin-bottom: 8px;
-  padding: 10px;
-  background-color: rgba(135, 206, 235, 0.1); /* Subtle neon background */
-  border-left: 3px solid var(--neon-color);
-  border-radius: 0 6px 6px 0; /* Rounded corners on one side */
+  margin-top: 10px; /* UPDATED */
+  margin-bottom: 10px; /* UPDATED */
+  padding: 8px; /* UPDATED */
+  border-radius: 4px; /* UPDATED */
   font-size: 0.9rem;
-  color: inherit;
   text-align: left;
+  background-color: transparent;
+  border: 1px dashed var(--fantasy-accent-magic);
+  color: var(--fantasy-secondary-text);
 }
 
 .did-you-mean-container .suggestion-text {
@@ -777,27 +779,28 @@ body.light-mode .suggestion-item:hover {
 }
 
 .did-you-mean-container .suggestion-link {
-  color: var(--neon-color);
+  color: var(--fantasy-accent-magic);
   text-decoration: underline;
   cursor: pointer;
   font-weight: bold;
 }
 
 .did-you-mean-container .suggestion-link:hover {
-  color: #ffed4a;
+  color: var(--fantasy-accent-gold);
+  text-decoration: underline;
 }
 
 /* Light mode adjustments for "Did You Mean" */
 body.light-mode .did-you-mean-container {
-  background-color: rgba(0, 0, 0, 0.05);
-  border-left: 3px solid var(--sky-blue-color);
-  color: #1f2937;
+  background-color: transparent;
+  border-color: var(--fantasy-border-color);
+  color: var(--fantasy-secondary-text);
 }
 
 body.light-mode .did-you-mean-container .suggestion-link {
-  color: var(--sky-blue-color);
+  color: var(--fantasy-border-color);
 }
 
 body.light-mode .did-you-mean-container .suggestion-link:hover {
-  color: #1d4ed8;
+  color: var(--fantasy-accent-gold);
 }
