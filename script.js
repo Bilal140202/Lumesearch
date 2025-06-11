@@ -406,11 +406,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Theme Setup and Toggle Button Emoji ---
   function updateToggleModeButtonEmoji(button) {
     if (!button) return;
-    // Assumes dark-mode class is on body for dark theme, otherwise light.
-    if (document.body.classList.contains('dark-mode')) {
-      button.textContent = '🌙'; // Moon for dark mode
-    } else {
+    if (document.body.classList.contains('light-mode')) {
       button.textContent = '☀️'; // Sun for light mode
+    } else {
+      button.textContent = '🌙'; // Moon for dark mode (when light-mode is absent)
     }
   }
 

@@ -8,22 +8,7 @@ export function loadFromLocalStorage(key, defaultValue = null) {
 }
 
 export function toggleMode() {
-  document.body.classList.toggle('dark-mode');
+  document.body.classList.toggle('light-mode');
 }
 
-export function applySystemTheme() {
-  const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-  darkModeMediaQuery.addEventListener('change', (e) => {
-    if (e.matches) {
-      document.body.classList.add('dark-mode');
-    } else {
-      document.body.classList.remove('dark-mode');
-    }
-  });
-
-  if (darkModeMediaQuery.matches) {
-    document.body.classList.add('dark-mode');
-  } else {
-    document.body.classList.remove('dark-mode');
-  }
-}
+// Removed applySystemTheme function as similar logic is in script.js

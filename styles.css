@@ -359,8 +359,9 @@ body.dark-mode {
 }
 
 body.light-mode {
-  background-color: var(--light-mode-bg);
-  color: var(--light-mode-text);
+  background-color: var(--fantasy-secondary-bg); /* Parchment */
+  color: var(--fantasy-secondary-text); /* Dark text */
+  background-image: none; /* Remove dark gradient */
 }
 
 /* Light Mode for Search Section Containers */
