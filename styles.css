@@ -76,7 +76,7 @@ body.dark-mode {
   gap: 20px;
 }
 
-.ash-toggle {
+.sparkles-toggle {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -88,12 +88,12 @@ body.dark-mode {
   font-size: 0.9rem;
 }
 
-.ash-toggle .toggle-label {
+.sparkles-toggle .toggle-label {
   cursor: pointer;
   font-family: var(--fantasy-font-body);
 }
 
-.ash-toggle .toggle-checkbox {
+.sparkles-toggle .toggle-checkbox {
   cursor: pointer;
   width: 16px;
   height: 16px;
@@ -382,13 +382,13 @@ body.light-mode .book-search h2 {
 }
 
 
-body.light-mode .ash-toggle {
+body.light-mode .sparkles-toggle {
   background-color: transparent;
   border: none;
   color: var(--fantasy-secondary-text);
 }
 
-body.light-mode .ash-toggle .toggle-checkbox {
+body.light-mode .sparkles-toggle .toggle-checkbox {
   accent-color: var(--fantasy-accent-magic);
 }
 
@@ -697,7 +697,7 @@ body.light-mode .bookmark-folders li:hover {
 .sparkle:nth-child(5) { left: 55%; animation-duration: 20s; animation-delay: 6s; }
 .sparkle:nth-child(6) { left: 70%; animation-duration: 16s; animation-delay: 2s; }
 
-.sparkles-container.ash-animation-disabled { /* Kept JS class name for now */
+.sparkles-container.sparkles-disabled {
   display: none !important;
 }
 
