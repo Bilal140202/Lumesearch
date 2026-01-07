@@ -390,3 +390,81 @@ body.light-mode .suggestion-item:hover {
     display: flex;
     gap: 10px;
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+        position: relative;
+    }
+
+    .controls-container {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    .main-nav {
+        width: 100%;
+        overflow-x: auto; /* Scrollable horizontal nav */
+        padding: 10px;
+        justify-content: flex-start; /* Ensure items start from left */
+        gap: 15px;
+        box-sizing: border-box;
+        scrollbar-width: none; /* Hide scrollbar Firefox */
+    }
+
+    .main-nav::-webkit-scrollbar {
+        display: none; /* Hide scrollbar Chrome/Safari */
+    }
+
+    .nav-btn {
+        white-space: nowrap; /* Prevent text wrap */
+        font-size: 0.85rem;
+    }
+
+    .scene {
+        width: 95%; /* Wider on mobile */
+    }
+
+    .scene-content {
+        padding: 20px; /* Less padding */
+    }
+
+    .scene h2 {
+        font-size: 1.8rem; /* Smaller title */
+    }
+
+    .site-selector, .anime-site-selector, .kdrama-site-selector, .book-site-selector {
+        flex-direction: column; /* Stack input and select */
+        align-items: stretch;
+    }
+
+    .site-selector input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px; /* Restore margin */
+    }
+
+    .filetype-selector, .anime-filetype-selector, .kdrama-filetype-selector, .book-filetype-selector {
+        flex-direction: column;
+    }
+
+    input[type="text"], select {
+        font-size: 16px; /* Prevent iOS zoom */
+        padding: 12px;
+    }
+
+    .action-btn {
+        width: 100%;
+        padding: 15px 0;
+    }
+
+    /* Suggestions list adjustment for mobile stacking */
+    .suggestions-list {
+         width: 100%;
+         left: 0;
+         margin-top: -10px;
+    }
+}

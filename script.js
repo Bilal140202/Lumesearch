@@ -344,6 +344,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  setupNavigation();
+
   // Initial Entry Animation
   anime({
     targets: '#scene-general',
