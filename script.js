@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "suprise": "surprise",
     "tommorow": "tomorrow",
     "tounge": "tongue",
-    "Wensday": "Wednesday",
+    "wensday": "Wednesday",
     "anouncement": "announcement",
     "artic": "arctic",
     "athiest": "atheist",
@@ -177,26 +177,39 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!didYouMeanContainer) return;
     didYouMeanContainer.innerHTML = ''; // Clear previous suggestions
 
-    const words = query.toLowerCase().split(/\s+/); // Split by spaces, handle multiple spaces
+    const words = query.split(/\s+/); // Split by spaces, handle multiple spaces
     let correctedWords = [];
     let hasMisspellings = false;
 
     words.forEach(word => {
       // Remove common punctuation for checking, but keep original word form for reconstruction if not misspelled
-      const cleanedWord = word.replace(/[.,!?;:"']/g, '');
-      if (commonMisspellings[cleanedWord]) {
-        // Attempt to preserve original casing of the first letter if corrected word is single char different
-        let corrected = commonMisspellings[cleanedWord];
-        if (word.length > 0 && corrected.length > 0 && word[0] === word[0].toUpperCase() && word.slice(1) === cleanedWord.slice(1) ) {
-            // if original word was "Teh" and cleaned is "teh" and corrected is "the"
-            // make it "The"
-             corrected = corrected.charAt(0).toUpperCase() + corrected.slice(1);
-        } else if (word === word.toUpperCase() && word.length > 1) { // If original was all caps (and not just "A")
-            corrected = corrected.toUpperCase();
-        }
-        // More complex casing preservation might be needed for other scenarios
+      const wordNoPunct = word.replace(/[.,!?;:"']/g, '');
+      const cleanedWordKey = wordNoPunct.toLowerCase();
 
-        correctedWords.push(word.replace(cleanedWord, corrected)); // Replace the misspelled part within the original word (to keep punctuation)
+      if (commonMisspellings[cleanedWordKey]) {
+        let corrected = commonMisspellings[cleanedWordKey];
+
+        // Preserve Casing Logic
+        if (wordNoPunct === wordNoPunct.toUpperCase() && wordNoPunct.length > 1) {
+            // All CAPS (e.g., TEH -> THE)
+            corrected = corrected.toUpperCase();
+        } else if (wordNoPunct.charAt(0) === wordNoPunct.charAt(0).toUpperCase() && wordNoPunct.length > 0) {
+            // Title Case (e.g., Teh -> The)
+            corrected = corrected.charAt(0).toUpperCase() + corrected.slice(1);
+        }
+        // else: keep corrected as is (lowercase)
+
+        // Replace the misspelled part within the original word (to keep punctuation)
+        // We use a regex with 'i' flag to match the word in the original string regardless of case,
+        // ensuring we replace the word part but keep punctuation.
+        // wordNoPunct is the "dirty" word without punctuation but with original case.
+        // We want to replace 'wordNoPunct' inside 'word' with 'corrected'.
+
+        // Simple replace might fail if word has repeating parts, but for simple word replacement:
+        // const regex = new RegExp(escapeRegExp(wordNoPunct), 'g'); // Need escapeRegExp if we were being super safe
+
+        // Simpler approach: replace the text found in wordNoPunct
+        correctedWords.push(word.replace(wordNoPunct, corrected));
         hasMisspellings = true;
       } else {
         correctedWords.push(word); // Keep original word
