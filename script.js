@@ -4,7 +4,6 @@ import { initBackground } from './background.js';
 document.addEventListener('DOMContentLoaded', () => {
   // --- Initialization ---
   initBackground();
-  setupNavigation();
 
   const searchInput = document.getElementById('search-input');
   const siteSelect = document.getElementById('site-select');
@@ -97,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
       suggestionsContainer.appendChild(item);
     });
 
-    // Append relative to input parent for correct positioning with absolute styles
+    // Append relative to input parent for correct positioning
     inputElement.parentNode.style.position = 'relative';
     inputElement.parentNode.appendChild(suggestionsContainer);
   }
@@ -195,33 +194,32 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetScene = document.getElementById(targetId);
 
         if (currentScene && currentScene !== targetScene) {
-          // Animate Out
+          // Robust Transition Strategy:
+          // 1. Fade out current
+          // 2. Hide current
+          // 3. Show target (invisible)
+          // 4. Fade in target
+
           anime({
             targets: currentScene,
             opacity: 0,
-            scale: 0.9,
-            translateX: '-50%',
-            translateY: '-50%',
-            duration: 400,
+            scale: 0.95, // Subtle scale down
+            duration: 300,
             easing: 'easeInOutQuad',
             complete: () => {
               currentScene.classList.remove('active');
-              currentScene.style.display = 'none'; // Ensure hidden
+              // Ensure visibility is toggled by class, but we can force styles if needed
 
-              // Prepare Target
-              targetScene.style.display = 'block';
-              targetScene.style.opacity = 0;
-              targetScene.style.transform = 'translate(-50%, -50%) scale(1.1)'; // Start slightly zoomed in
               targetScene.classList.add('active');
+              // Ensure starting state for animation
+              targetScene.style.opacity = 0;
+              targetScene.style.transform = 'scale(1.05)'; // Start slightly zoomed in
 
-              // Animate In
               anime({
                 targets: targetScene,
                 opacity: 1,
                 scale: 1,
-                translateX: '-50%',
-                translateY: '-50%',
-                duration: 600,
+                duration: 500,
                 easing: 'easeOutExpo'
               });
             }
@@ -234,11 +232,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Search Logic Helper ---
   function performSearch(input, siteSel, customSiteInput, filetypeSel, historyList, prefix = '') {
     let originalQueryText = input.value.trim();
-
-    // Check misspellings but continue search
-    // Note: We can't easily inject the "Did you mean" into the UI here without passing the container ID
-    // So distinct handlers below are better for full UI feedback, but we can share core logic.
-
     let query = originalQueryText;
     const selectedSites = Array.from(siteSel.selectedOptions).map(option => option.value);
     const customSiteValue = customSiteInput ? customSiteInput.value.trim() : '';
@@ -256,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (query) {
       searchHistory.push(query);
-      if(searchHistory.length > 10) searchHistory.shift(); // Limit history
+      if(searchHistory.length > 10) searchHistory.shift();
       saveToLocalStorage('searchHistory', searchHistory);
       updateHistoryUI();
       window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
@@ -322,8 +315,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial Theme Check
   const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-  // Force dark mode default unless user toggles.
-  // We want the cinematic experience to be the default.
   document.body.classList.remove('light-mode');
   updateToggleModeButtonEmoji(toggleModeButton);
 
@@ -348,6 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Initialize Navigation Logic
   setupNavigation();
 
   // Initial Entry Animation
@@ -355,8 +347,6 @@ document.addEventListener('DOMContentLoaded', () => {
     targets: '#scene-general',
     opacity: [0, 1],
     scale: [0.9, 1],
-    translateX: '-50%',
-    translateY: '-50%',
     duration: 1000,
     easing: 'easeOutExpo',
     delay: 200
