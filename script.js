@@ -99,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
     "noticable": "noticeable",
     "passtime": "pastime",
     "percieve": "perceive",
-    "personel": "personal", // Or personnel depending on context, common mix-up
     "possesssion": "possession",
     "potatos": "potatoes",
     "profesor": "professor",
@@ -116,6 +115,25 @@ document.addEventListener('DOMContentLoaded', () => {
     "vaccum": "vacuum",
     "wether": "whether",
     // Add more common misspellings as needed
+  };
+
+  const contextMisspellings = {
+    "personel": (words, index) => {
+      const personnelKeywords = [
+        "management", "department", "file", "files", "record", "records", "military", "army", "navy",
+        "office", "staff", "human", "resource", "resources", "security", "services", "division",
+        "administration", "policy", "training", "hiring", "recruitment", "employee", "employees",
+        "employer", "worker", "job", "career", "authorized", "only", "medical"
+      ];
+
+      // words is already array of lowercased strings
+      const isPersonnelContext = words.some((w, i) => {
+        const cleaned = w.replace(/[.,!?;:"']/g, '').toLowerCase();
+        return i !== index && personnelKeywords.includes(cleaned);
+      });
+
+      return isPersonnelContext ? "personnel" : "personal";
+    }
   };
 
   // --- Search Suggestions ---
@@ -177,22 +195,30 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!didYouMeanContainer) return;
     didYouMeanContainer.innerHTML = ''; // Clear previous suggestions
 
-    const words = query.toLowerCase().split(/\s+/); // Split by spaces, handle multiple spaces
+    const lowerCaseWords = query.toLowerCase().split(/\s+/); // Split by spaces, handle multiple spaces
+    const words = query.split(/\s+/); // Keep original casing
     let correctedWords = [];
     let hasMisspellings = false;
 
-    words.forEach(word => {
+    words.forEach((word, index) => {
       // Remove common punctuation for checking, but keep original word form for reconstruction if not misspelled
-      const cleanedWord = word.replace(/[.,!?;:"']/g, '');
-      if (commonMisspellings[cleanedWord]) {
+      const cleanedWord = word.replace(/[.,!?;:"']/g, '').toLowerCase();
+      let corrected = null;
+
+      if (contextMisspellings[cleanedWord]) {
+        corrected = contextMisspellings[cleanedWord](lowerCaseWords, index);
+      } else if (commonMisspellings[cleanedWord]) {
+        corrected = commonMisspellings[cleanedWord];
+      }
+
+      if (corrected) {
         // Attempt to preserve original casing of the first letter if corrected word is single char different
-        let corrected = commonMisspellings[cleanedWord];
-        if (word.length > 0 && corrected.length > 0 && word[0] === word[0].toUpperCase() && word.slice(1) === cleanedWord.slice(1) ) {
-            // if original word was "Teh" and cleaned is "teh" and corrected is "the"
-            // make it "The"
-             corrected = corrected.charAt(0).toUpperCase() + corrected.slice(1);
+        if (word.length > 0 && corrected.length > 0 && word[0] === word[0].toUpperCase() && word.slice(1) === cleanedWord.slice(1)) {
+          // if original word was "Teh" and cleaned is "teh" and corrected is "the"
+          // make it "The"
+          corrected = corrected.charAt(0).toUpperCase() + corrected.slice(1);
         } else if (word === word.toUpperCase() && word.length > 1) { // If original was all caps (and not just "A")
-            corrected = corrected.toUpperCase();
+          corrected = corrected.toUpperCase();
         }
         // More complex casing preservation might be needed for other scenarios
 
