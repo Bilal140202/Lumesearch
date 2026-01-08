@@ -200,6 +200,8 @@ document.addEventListener('DOMContentLoaded', () => {
             targets: currentScene,
             opacity: 0,
             scale: 0.9,
+            translateX: '-50%',
+            translateY: '-50%',
             duration: 400,
             easing: 'easeInOutQuad',
             complete: () => {
@@ -217,6 +219,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 targets: targetScene,
                 opacity: 1,
                 scale: 1,
+                translateX: '-50%',
+                translateY: '-50%',
                 duration: 600,
                 easing: 'easeOutExpo'
               });
@@ -351,6 +355,8 @@ document.addEventListener('DOMContentLoaded', () => {
     targets: '#scene-general',
     opacity: [0, 1],
     scale: [0.9, 1],
+    translateX: '-50%',
+    translateY: '-50%',
     duration: 1000,
     easing: 'easeOutExpo',
     delay: 200
