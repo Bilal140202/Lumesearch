@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const bookSiteSelect = document.getElementById('book-site-select');
   const bookFiletypeSelect = document.getElementById('book-filetype-select');
   const bookSearchButton = document.getElementById('book-search-button');
-  const ashToggle = document.getElementById('toggle-ash');
-  const ashesContainer = document.querySelector('.ashes-container');
+  const sparklesToggle = document.getElementById('toggle-sparkles');
+  const sparklesContainer = document.querySelector('.sparkles-container');
 
   // --- Common Misspellings Dictionary ---
   const commonMisspellings = {
@@ -445,25 +445,25 @@ document.addEventListener('DOMContentLoaded', () => {
     updateToggleModeButtonEmoji(toggleModeButton); // Update emoji after toggle
   });
 
-  // --- Ash Animation Toggle Logic ---
-  if (ashToggle && ashesContainer) {
+  // --- Sparkles Animation Toggle Logic ---
+  if (sparklesToggle && sparklesContainer) {
     // Load preference from local storage, default to true (enabled)
-    const ashAnimationStoredPref = localStorage.getItem('ashAnimationEnabled');
-    let ashAnimationEnabled = ashAnimationStoredPref !== null ? JSON.parse(ashAnimationStoredPref) : true;
+    const sparklesAnimationStoredPref = localStorage.getItem('sparklesAnimationEnabled');
+    let sparklesAnimationEnabled = sparklesAnimationStoredPref !== null ? JSON.parse(sparklesAnimationStoredPref) : true;
 
-    ashToggle.checked = ashAnimationEnabled;
+    sparklesToggle.checked = sparklesAnimationEnabled;
 
-    if (!ashAnimationEnabled) {
-      ashesContainer.classList.add('ash-animation-disabled');
+    if (!sparklesAnimationEnabled) {
+      sparklesContainer.classList.add('sparkles-disabled');
     }
 
-    ashToggle.addEventListener('change', () => {
-      ashAnimationEnabled = ashToggle.checked;
-      localStorage.setItem('ashAnimationEnabled', JSON.stringify(ashAnimationEnabled));
-      if (ashAnimationEnabled) {
-        ashesContainer.classList.remove('ash-animation-disabled');
+    sparklesToggle.addEventListener('change', () => {
+      sparklesAnimationEnabled = sparklesToggle.checked;
+      localStorage.setItem('sparklesAnimationEnabled', JSON.stringify(sparklesAnimationEnabled));
+      if (sparklesAnimationEnabled) {
+        sparklesContainer.classList.remove('sparkles-disabled');
       } else {
-        ashesContainer.classList.add('ash-animation-disabled');
+        sparklesContainer.classList.add('sparkles-disabled');
       }
     });
   }
